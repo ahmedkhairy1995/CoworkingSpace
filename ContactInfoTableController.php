@@ -38,7 +38,7 @@ class ContactInfoTableController
             return $object_Array;
         }
     }
-    
+
     public function getContactById($Id)
     {
         $result = $this->db->performQuery("SELECT * FROM contact_info WHERE id = '{$Id}'");

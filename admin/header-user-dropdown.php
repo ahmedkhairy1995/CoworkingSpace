@@ -18,8 +18,7 @@
 			<img src="images/user.png" alt="User Image"/>
 
 			<ul>
-				<li><a href="#">Edit</a></li>
-				<li><a href="#" class="highlight">Logout</a></li>
+				<li><a href="Logout.php" class="highlight">Logout</a></li>
 			</ul>
 		</div>
 
