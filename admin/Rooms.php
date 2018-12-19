@@ -15,8 +15,8 @@ $roomController = RoomTableController::getRoomTableController();
 
 
 <!DOCTYPE html>
-<html >
-<head >
+<html>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Co-Working Space</title>
@@ -39,11 +39,10 @@ $roomController = RoomTableController::getRoomTableController();
     <link rel="stylesheet" href="css/header-user-dropdown.css">
 
 
-
 </head>
 
 
-<body >
+<body>
 
 
 <div style="position: relative;">
@@ -53,7 +52,10 @@ $roomController = RoomTableController::getRoomTableController();
     <h2 style="text-align: center">Rooms</h2>
 
     <div style="padding-left: 20px; padding-right: 20px;">
-        <table id="roomsTable" class="display" >
+        <br/>
+        <table id="roomsTable" class="display">
+                <a class="btn btn--green full-width btn--with-shadow" href="AddRoom.php"
+                   style="line-height: 0;color:white;margin-bottom: 10px; float: right !important;"> Add </a>
             <thead>
             <tr>
                 <th>ID</th>
@@ -64,13 +66,14 @@ $roomController = RoomTableController::getRoomTableController();
             </thead>
             <tbody>
             <!-- for each loop -->
-            <?php $rooms = $roomController->getAllRooms();  foreach ($rooms as $room){
-                echo "<tr><td>".$room->getRoomID()."</td>" ;
-                echo "<td>".$room->getCapacity()."</td>" ;
-                echo "<td>".$room->getStatus()."</td>" ;
-                echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\"  href=\"EditRoom.php?id=".$room->getRoomID()."\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
+            <?php $rooms = $roomController->getAllRooms();
+            foreach ($rooms as $room) {
+                echo "<tr><td>" . $room->getRoomID() . "</td>";
+                echo "<td>" . $room->getCapacity() . "</td>";
+                echo "<td>" . $room->getStatus() . "</td>";
+                echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\"  href=\"EditRoom.php?id=" . $room->getRoomID() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
                 echo "</tr>";
-            }?>
+            } ?>
 
             </tbody>
         </table>

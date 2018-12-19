@@ -15,12 +15,7 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
 }
-require_once('../RoomTableController.php');
-$roomsController = RoomTableController::getRoomTableController();
-$roomId = $_GET['id'];
-$room = $roomsController->getRoomByID($roomId);
-if (!isset($room))
-    redirect_to("Overview.php?flag=0");
+
 ?>
 
 <!DOCTYPE html>
@@ -42,37 +37,27 @@ if (!isset($room))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="LoginController.php">
+            <form class="login100-form validate-form" method="post" action="AddRoomController.php">
 					<span class="login100-form-title p-b-49">
-						Edit Room
+						Add Room
 					</span>
 
-                <div class="wrap-input100 validate-input m-b-23">
-                    <span class="label-input100">Room Id</span>
-                    <input class="input100" type="text" name="roomId"
-                           value="<?php echo $room->getRoomID() ?>" readonly>
-                </div>
-                <br/>
 
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Capacity</span>
                     <input class="input100" type="number" max=50 step=1 name="capacity"
-                           value="<?php echo $room->getCapacity() ?>">
+                           value="" placeholder="Please insert the room capacity">
                 </div>
                 <br/>
 
                 <div class=" wrap-input100 validate-input" data-validate="Room Number is required">
                     <span class="label-input100">Status</span>
                     <select name="status">
-                        <option value="<?php echo 1 ?>"<?php if ($room->getStatus() == 1) {
-                            echo "selected";
-                        } ?>>
-                            <?php echo "Active"; ?>
+                        <option value="1" selected>
+                           Active
                         </option>
-                        <option value="<?php echo 0 ?>"<?php if ($room->getStatus() == 0) {
-                            echo "selected";
-                        } ?>>
-                            <?php echo "InActive"; ?>
+                        <option value="0">
+                            InActive
                         </option>
                     </select>
                 </div>
@@ -86,7 +71,7 @@ if (!isset($room))
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Edit
+                            Add
                         </button>
                     </div>
                 </div>
