@@ -38,6 +38,21 @@ class ContactInfoTableController
             return $object_Array;
         }
     }
+    
+    public function getContactById($Id)
+    {
+        $result = $this->db->performQuery("SELECT * FROM contact_info WHERE id = '{$Id}'");
+        $object_Array = array();
+        if (isset($result) && isset(self::$controller)) {
+            while ($row = $this->db->fetchArray($result)) {
+                $contact = ContactInfoModel::instantiate($row);
+                $object_Array[] = $contact;
+            }
+            if (empty($object_Array))
+                return null;
+            return $object_Array[0];
+        }
+    }
 
     public function getDB()
     {
