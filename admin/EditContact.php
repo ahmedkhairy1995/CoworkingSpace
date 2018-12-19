@@ -50,7 +50,7 @@ if (!isset($contact))
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Contact Id</span>
                     <input class="input100" type="text" name="contactId"
-                           value="<?php echo $contact->getId() ?>" disabled>
+                           value="<?php echo $contact->getId() ?>" readonly>
                 </div>
                 <br/>
 

@@ -50,7 +50,7 @@ if (!isset($room))
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Room Id</span>
                     <input class="input100" type="text" name="roomId"
-                           value="<?php echo $room->getRoomID() ?>" disabled>
+                           value="<?php echo $room->getRoomID() ?>" readonly>
                 </div>
                 <br/>
 

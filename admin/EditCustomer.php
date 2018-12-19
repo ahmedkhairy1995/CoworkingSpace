@@ -50,7 +50,7 @@ if (!isset($user))
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Customer Id</span>
                     <input class="input100" type="text" name="customerId"
-                           value="<?php echo $user->getId() ?>" disabled>
+                           value="<?php echo $user->getId() ?>" readonly>
                 </div>
                 <br/>
 

@@ -44,7 +44,7 @@ if (!isset($reservation))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="../EditResController.php">
+            <form class="login100-form validate-form" method="post" action="EditReservationController.php">
 					<span class="login100-form-title p-b-49">
 						Edit Reservation
 					</span>
@@ -52,14 +52,14 @@ if (!isset($reservation))
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Reservation Id</span>
                     <input class="input100" type="text" name="reservationID"
-                           value="<?php echo $reservation->getReservationId() ?>" disabled>
+                           value="<?php echo $reservation->getReservationId() ?>" readonly>
                 </div>
                 <br/>
 
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">User Id</span>
                     <input class="input100" type="text" name="userID" value="<?php echo $reservation->getUserId() ?>"
-                           disabled>
+                           readonly>
                 </div>
                 <br/>
 
@@ -129,7 +129,7 @@ if (!isset($reservation))
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
+                        <button type="submit" name="UpdateReservation" value="Edit" class="login100-form-btn">
                             Edit
                         </button>
                     </div>
