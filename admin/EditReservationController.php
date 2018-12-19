@@ -26,7 +26,7 @@ $reservationController = ReservationTableController::getReservationTableControll
 $roomController = RoomTableController::getRoomTableController();
 if (isset($_POST["UpdateReservation"])) {
     $ID = isset($_POST['reservationID']) ? $_POST['reservationID'] : "";
-    echo $ID;
+    $UserId = isset($_POST['userID']) ? $_POST['userID'] : "";
     $RoomNumber = isset($_POST["roomForm"]) ? $_POST["roomForm"] : "";
     $Date = isset($_POST["reservationDay"]) ? $_POST["reservationDay"] : "";
     $From = isset($_POST["from"]) ? $_POST["from"] : "";
