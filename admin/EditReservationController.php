@@ -45,7 +45,6 @@ if (isset($_POST["UpdateReservation"])) {
     $count = $reservationController->checkRoomAvailabilityForOtherReservations($ID, $RoomNumber, $From, $To, $Date);
 
     $UserId = $reservationController->getReservationById($ID)->getUserId();
-    echo "May";
     if ($Date < date("Y-m-d")) {
         redirect_to("EditReservation.php?flag=2&id=" . $ID);
     } elseif ($To < $From) {
