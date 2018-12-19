@@ -15,7 +15,6 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
 }
-require_once('../ReservationTableController.php');
 require_once('../RoomTableController.php');
 $roomsController = RoomTableController::getRoomTableController();
 $roomId = $_GET['id'];
@@ -58,40 +57,24 @@ if (!isset($room))
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Capacity</span>
                     <input class="input100" type="number" max=50 step=1 name="capacity"
-                           value="<?php echo $room->getCapacity() ?>>
+                           value="<?php echo $room->getCapacity() ?>">
                 </div>
                 <br/>
 
                 <div class=" wrap-input100 validate-input" data-validate="Room Number is required">
-                    <span class="label-input100">Room Number</span>
+                    <span class="label-input100">Status</span>
                     <select name="roomNumber">
-                        <?php
-                        $list = $roomsController->getAllFreeRooms();
-                        $i = 0;
-                        while ($i < count($list)) {
-                            ?>
-                            <option value="<?php echo $list[$i]->getRoomID(); ?>"<?php if ($list[$i]->getRoomID() == $reservation->getRoomNo()) {
-                                echo "selected";
-                            } ?>>
-                                <?php echo $list[$i]->getRoomID(); ?>
-                            </option>
-                            <?php $i++;
-                        } ?>
+                        <option value="<?php echo 1 ?>"<?php if ($room->getStatus() == 1) {
+                            echo "selected";
+                        } ?>>
+                            <?php echo "Active"; ?>
+                        </option>
+                        <option value="<?php echo 0 ?>"<?php if ($room->getStatus() == 0) {
+                            echo "selected";
+                        } ?>>
+                            <?php echo "InActive"; ?>
+                        </option>
                     </select>
-                </div>
-                <br/>
-
-                <div class="wrap-input100 validate-input" data-validate="Start time is required">
-                    <span class="label-input100">Start Time</span>
-                    <input class="input100" name="startTime" type="time" name="from" step="1800" min="12:00" max="22:00"
-                           value="<?php echo $reservation->getStartTime() ?>">
-                </div>
-                <br/>
-
-                <div class="wrap-input100 validate-input" data-validate="End time is required">
-                    <span class="label-input100">End Time</span>
-                    <input class="input100" name="endTime" type="time" name="from" step="1800" min="12:00" max="22:00"
-                           value="<?php echo $reservation->getEndTime() ?>">
                 </div>
                 <br/>
 
