@@ -1,22 +1,29 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: May
+ * Date: 12/19/2018
+ * Time: 7:14 PM
+ */
 function redirect_to($newlocation)
 {
     header("Location:" . $newlocation);
     exit;
 }
 
+if (!isset($_SESSION['admin'])) {
+    redirect_to("Login.php");
+}
 ?>
+
 <?php
 session_start();
-require_once('ReservationTableController.php');
-require_once('RoomTableController.php');
-require_once('UsersTableController.php');
-require_once('User.php');
+require_once('../ReservationTableController.php');
+require_once('../RoomTableController.php');
 ?>
 <?php
-$roomController = RoomTableController::getRoomTableController();
-$userController = UsersTableController::getUsersTableController();
 $reservationController = ReservationTableController::getReservationTableController();
+$roomController = RoomTableController::getReservationTableController();
 
 if (isset($_SESSION['views'])) {
 
@@ -33,20 +40,13 @@ if (isset($_SESSION['views'])) {
         $Capacity = isset($_POST["Capacity"]) ? $_POST["Capacity"] : "";
 
 
-        $email = $_SESSION['views'];
-        $user = $userController->getUserByEmail($email);
-        $userID = $user->getId();
-        $blocked = $user->getBlocked();
-
         //to get the capacity of the room
         $maxCapacity = $roomController->getCapacityOfRoom($RoomNumber);
 
         //to check if the room is reserved
-        $count = $reservationController->checkRoomAvailabilityForOtherReservations($ID, $RoomNumber, $From, $To, $Date);
+        $count = $reservationController->checkRoomAvailability($RoomNumber, $From, $To, $Date);
 
-        if ($blocked == 1) {
-            redirect_to("EditReservation.php?flag=1&id=" . $ID);
-        } elseif ($Date < date("Y-m-d")) {
+        if ($Date < date("Y-m-d")) {
             redirect_to("EditReservation.php?flag=2&id=" . $ID);
         } elseif ($To < $From) {
             redirect_to("EditReservation.php?flag=3&id=" . $ID);
@@ -58,15 +58,18 @@ if (isset($_SESSION['views'])) {
         } else if ($maxCapacity < $Capacity) {
             redirect_to("EditReservation.php?flag=6&id=" . $ID);
         } else {
-            $result = $reservationController->updateReservation($ID, $userID, $RoomNumber, $From, $To, $Projector, $Marker, $WhiteBoard, $AC, $Date, $Capacity);
+            $result = $db->query("UPDATE reservation SET user_id=$userID,room_no=$RoomNumber,startTime='$From',endTime='$To',projector='$Projector',markers='$Marker',whiteBoard='$WhiteBoard',AC='$AC',date='$Date', capacity=$Capacity WHERE reservation_id = $ID");
+
             if ($result)
                 redirect_to("ViewReservation.php?flag=1");
+            else
+                echo mysqli_connect_errno();
         }
     }
+
 } else {
-    redirect_to("LoginPage.php");
+    redirect_to("Login.php");
 }
 
 
 ?>
-  
