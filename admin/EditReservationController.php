@@ -23,7 +23,7 @@ require_once('../RoomTableController.php');
 ?>
 <?php
 $reservationController = ReservationTableController::getReservationTableController();
-$roomController = RoomTableController::getReservationTableController();
+$roomController = RoomTableController::getRoomTableController();
 
 if (isset($_SESSION['views'])) {
 
@@ -44,7 +44,9 @@ if (isset($_SESSION['views'])) {
         $maxCapacity = $roomController->getCapacityOfRoom($RoomNumber);
 
         //to check if the room is reserved
-        $count = $reservationController->checkRoomAvailability($RoomNumber, $From, $To, $Date);
+        $count = $reservationController->checkRoomAvailabilityForOtherReservations($ID, $RoomNumber, $From, $To, $Date);
+
+        $UserId = $reservationController->getReservationById($ID)->getUserId();
 
         if ($Date < date("Y-m-d")) {
             redirect_to("EditReservation.php?flag=2&id=" . $ID);
@@ -58,12 +60,9 @@ if (isset($_SESSION['views'])) {
         } else if ($maxCapacity < $Capacity) {
             redirect_to("EditReservation.php?flag=6&id=" . $ID);
         } else {
-            $result = $db->query("UPDATE reservation SET user_id=$userID,room_no=$RoomNumber,startTime='$From',endTime='$To',projector='$Projector',markers='$Marker',whiteBoard='$WhiteBoard',AC='$AC',date='$Date', capacity=$Capacity WHERE reservation_id = $ID");
-
+            $result = $reservationController->updateReservation($ID, $UserId, $RoomNumber, $From, $To, $Projector, $Marker, $WhiteBoard, $AC, $Date, $Capacity);
             if ($result)
-                redirect_to("ViewReservation.php?flag=1");
-            else
-                echo mysqli_connect_errno();
+                redirect_to("Reservations.php?flag=1");
         }
     }
 
