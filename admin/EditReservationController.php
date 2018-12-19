@@ -26,7 +26,7 @@ $reservationController = ReservationTableController::getReservationTableControll
 $roomController = RoomTableController::getRoomTableController();
 if (isset($_POST["UpdateReservation"])) {
     $ID = isset($_POST['reservationID']) ? $_POST['reservationID'] : "";
-    echo $ID;
+    $UserId = isset($_POST['userID']) ? $_POST['userID'] : "";
     $RoomNumber = isset($_POST["roomForm"]) ? $_POST["roomForm"] : "";
     $Date = isset($_POST["reservationDay"]) ? $_POST["reservationDay"] : "";
     $From = isset($_POST["from"]) ? $_POST["from"] : "";
@@ -45,7 +45,6 @@ if (isset($_POST["UpdateReservation"])) {
     $count = $reservationController->checkRoomAvailabilityForOtherReservations($ID, $RoomNumber, $From, $To, $Date);
 
     $UserId = $reservationController->getReservationById($ID)->getUserId();
-    echo "May";
     if ($Date < date("Y-m-d")) {
         redirect_to("EditReservation.php?flag=2&id=" . $ID);
     } elseif ($To < $From) {
