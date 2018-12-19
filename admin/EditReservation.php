@@ -44,7 +44,7 @@ if (!isset($reservation))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="LoginController.php">
+            <form class="login100-form validate-form" method="post" action="../EditResController.php">
 					<span class="login100-form-title p-b-49">
 						Edit Reservation
 					</span>
@@ -65,7 +65,7 @@ if (!isset($reservation))
 
                 <div class="wrap-input100 validate-input" data-validate="Room Number is required">
                     <span class="label-input100">Room Number</span>
-                    <select name="roomNumber">
+                    <select name="roomForm">
                         <?php
                         $list = $roomsController->getAllFreeRooms();
                         $i = 0;
@@ -84,30 +84,38 @@ if (!isset($reservation))
 
                 <div class="wrap-input100 validate-input" data-validate="Start time is required">
                     <span class="label-input100">Start Time</span>
-                    <input class="input100" name="startTime" type="time" name="from" step="1800" min="12:00" max="22:00"
+                    <input class="input100" name="from" type="time" step="1800" min="12:00" max="22:00"
                            value="<?php echo $reservation->getStartTime() ?>">
+                </div>
+                <br/>
+
+                <div class="wrap-input100 validate-input" data-validate="Capacity is required">
+                    <span class="label-input100">Capacity</span>
+                    <input type="number" name="Capacity" min="1" max="50" required
+                           value="<?php echo $reservation->getCapacity() ?>"><br><br>
                 </div>
                 <br/>
 
                 <div class="wrap-input100 validate-input" data-validate="End time is required">
                     <span class="label-input100">End Time</span>
-                    <input class="input100" name="endTime" type="time" name="from" step="1800" min="12:00" max="22:00"
+                    <input class="input100" name="to" type="time" step="1800" min="12:00" max="22:00"
                            value="<?php echo $reservation->getEndTime() ?>">
                 </div>
                 <br/>
 
                 <div class="wrap-input100">
                     <span class="label-input100">Date </span>
-                    <input id="DatePicker" type="date" name="date" value="<?php echo $reservation->getDate() ?>">
+                    <input id="DatePicker" type="date" name="reservationDay"
+                           value="<?php echo $reservation->getDate() ?>">
                 </div>
                 <br/>
-                <input type="checkbox" id="checkbox1" name="projector"
+                <input type="checkbox" id="checkbox1" name="Projector"
                        value="Projector"<?php if ($reservation->getProjector() == 'Yes') echo 'checked'; ?>>Projector
                 &nbsp; &nbsp;
-                <input type="checkbox" id="checkbox2" name="markers"
+                <input type="checkbox" id="checkbox2" name="Markers"
                        value="Markers"<?php if ($reservation->getMarkers() == 'Yes') echo 'checked'; ?>>Markers
                 &nbsp; &nbsp;
-                <input type="checkbox" id="checkbox3" name="whiteBoard"
+                <input type="checkbox" id="checkbox3" name="WhiteBoard"
                        value="WhiteBoard"<?php if ($reservation->getWhiteBoard() == 'Yes') echo 'checked'; ?>>WhiteBoard
                 &nbsp; &nbsp;
                 <input type="checkbox" id="checkbox4" name="AC"

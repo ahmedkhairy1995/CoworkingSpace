@@ -150,7 +150,7 @@ if ($reservation != null) {
 
             <p><strong>Capacity</strong></p>
 
-            <input type="number" name="Capacity" min="1" max="6" required value="<?php echo "$Capacity" ?>"><br><br>
+            <input type="number" name="Capacity" min="1" max="50" required value="<?php echo "$Capacity" ?>"><br><br>
 
             <p><strong>From</strong><i style="color:dimgrey;">&nbsp Price per hour: 5 EGP</i></p>
             <input type="time" name="from" step="1800" min="12:00" max="22:00" value="<?php echo "$From" ?>">
