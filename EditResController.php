@@ -20,7 +20,6 @@ $userController = UsersTableController::getUsersTableController();
 $db = new Db();
 
 if (isset($_SESSION['views'])) {
-
     if (isset($_POST["UpdateReservation"])) {
         $ID = $_GET['id'];
         $RoomNumber = isset($_POST["roomForm"]) ? $_POST["roomForm"] : "";
