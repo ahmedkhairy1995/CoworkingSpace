@@ -14,8 +14,8 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
 ?>
 
 <!DOCTYPE html>
-<html >
-<head >
+<html>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Co-Working Space</title>
@@ -38,11 +38,10 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
     <link rel="stylesheet" href="css/header-user-dropdown.css">
 
 
-
 </head>
 
 
-<body >
+<body>
 
 
 <div style="position: relative;">
@@ -52,7 +51,9 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
     <h2 style="text-align: center">Contacts</h2>
 
     <div style="padding-left: 20px; padding-right: 20px;">
-        <table id="contactsTable" class="display" >
+        <table id="contactsTable" class="display">
+            <a class="btn btn--green full-width btn--with-shadow" href="AddContact.php"
+               style="line-height: 0;color:white;margin-bottom: 10px; float: right !important;"> Add </a>
             <thead>
             <tr>
                 <th>ID</th>
@@ -62,12 +63,13 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
             </thead>
             <tbody>
             <!-- for each loop -->
-            <?php $contacts = $contactController->getAllContacts();  foreach ($contacts as $contact){
-                echo "<tr><td>".$contact->getId()."</td>" ;
-                echo "<td>".$contact->getContactNum()."</td>" ;
-                echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\" href=\"EditContact.php?id=".$contact->getId()."\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
+            <?php $contacts = $contactController->getAllContacts();
+            foreach ($contacts as $contact) {
+                echo "<tr><td>" . $contact->getId() . "</td>";
+                echo "<td>" . $contact->getContactNum() . "</td>";
+                echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\" href=\"EditContact.php?id=" . $contact->getId() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
                 echo "</tr>";
-            }?>
+            } ?>
 
 
             </tbody>

@@ -83,8 +83,9 @@ class RoomTableController
     {
         $query = "INSERT INTO rooms (capacity,status) VALUES({$capacity},{$status});";
         $result = $this->getDB()->performQuery($query);
-        if (isset($result))
+        if (isset($result)){
             return true;
+        }
         return false;
     }
 
