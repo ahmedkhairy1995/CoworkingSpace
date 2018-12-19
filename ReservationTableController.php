@@ -51,6 +51,18 @@ class ReservationTableController
         return 0;
     }
 
+    public function checkRoomAvailabilityForOtherReservations($id, $RoomNumber, $From, $To, $Date)
+    {
+        $query = "SELECT COUNT(*) as count FROM reservation WHERE reservation_id!={$id} AND room_no = {$RoomNumber} AND (startTime between '{$From}' AND '{$To}' OR endTime between '{$From}' AND '{$To}%' OR endTime='{$To}' OR startTime='{$From}') AND date='{$Date}' ";
+        $result = $this->db->performQuery($query);
+
+        if (isset($result)) {
+            $row = $this->db->fetchArray($result);
+            return $row['count'];
+        }
+        return 0;
+    }
+
     public function getReservationsOfUser($user_id, $TodayDate)
     {
         $query = "select * from reservation where user_id={$user_id} And Date >= '{$TodayDate}'";
@@ -87,6 +99,15 @@ class ReservationTableController
     {
         $query = "INSERT INTO reservation (user_id,room_no,startTime,endTime,projector,markers,whiteBoard,AC,date,capacity) VALUES({$userID},{$RoomNumber},'{$From}','{$To}','{$Projector}','{$Marker}','{$WhiteBoard}','{$AC}','{$Date}',{$Capacity});";
         $result = $this->getDB()->performQuery($query);
+        if (isset($result))
+            return true;
+        return false;
+    }
+
+    public function updateReservation($Id, $userID, $RoomNumber, $From, $To, $Projector, $Marker, $WhiteBoard, $AC, $Date, $Capacity)
+    {
+        $query = "UPDATE reservation SET user_id=$userID,room_no=$RoomNumber,startTime='$From',endTime='$To',projector='$Projector',markers='$Marker',whiteBoard='$WhiteBoard',AC='$AC',date='$Date', capacity=$Capacity WHERE reservation_id = $Id";
+        $result = $this->db->performQuery($query);
         if (isset($result))
             return true;
         return false;
