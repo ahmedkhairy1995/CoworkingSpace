@@ -79,6 +79,15 @@ class RoomTableController
         }
     }
 
+    public function insertRoom($capacity, $status)
+    {
+        $query = "INSERT INTO rooms (capacity,status) VALUES({$capacity},{$status});";
+        $result = $this->getDB()->performQuery($query);
+        if (isset($result))
+            return true;
+        return false;
+    }
+
     public function getDB()
     {
         return $this->db;
