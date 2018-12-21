@@ -88,9 +88,9 @@ class UsersTableController
         return false;
     }
 
-    public function updateUser($emailForWhere, $first_name, $last_name, $password, $new_email, $mobile_number, $address)
+    public function updateUser($id, $first_name, $last_name, $blocked, $new_email, $mobile_number, $address)
     {
-        $query = "UPDATE users SET first_name='{$first_name}',last_name='{$last_name}',password='{$password}',email='{$new_email}',mobile_number='{$mobile_number}',address='{$address}' WHERE  email='{$emailForWhere}'";
+        $query = "UPDATE users SET first_name='{$first_name}',last_name='{$last_name}',blocked='{$blocked}',email='{$new_email}',mobile_number='{$mobile_number}',address='{$address}' WHERE  id='{$id}'";
         $result = $this->getDB()->performQuery($query);
         if ($result)
             return true;

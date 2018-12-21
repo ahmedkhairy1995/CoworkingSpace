@@ -21,5 +21,5 @@ $result = $controller->insertRoom($capacity, $status);
 if ($result)
     redirect_to("Rooms.php?flag=1");
 else
-    redirect_to("AddRooms.php?flag=2");
+    redirect_to("AddRoom.php?flag=2");
 ?>

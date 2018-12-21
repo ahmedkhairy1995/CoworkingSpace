@@ -54,6 +54,24 @@ class ContactInfoTableController
         }
     }
 
+    public function insertContact($contact)
+    {
+        $query = "INSERT INTO contact_info (contactNum) VALUES({$contact});";
+        $result = $this->getDB()->performQuery($query);
+        if (isset($result)){
+            return true;
+        }
+        return false;
+    }
+    public function updateContact($id, $contactNum)
+    {
+        $query = "UPDATE contact_info SET contactNum='{$contactNum}' WHERE  id='{$id}'";
+        $result = $this->getDB()->performQuery($query);
+        if ($result)
+            return true;
+        return false;
+    }
+
     public function getDB()
     {
         return $this->db;

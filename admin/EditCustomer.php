@@ -42,7 +42,7 @@ if (!isset($user))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="LoginController.php">
+            <form class="login100-form validate-form" method="post" action="EditCustomerController.php">
 					<span class="login100-form-title p-b-49">
 						Edit Customer
 					</span>
@@ -68,12 +68,6 @@ if (!isset($user))
                 </div>
                 <br/>
 
-                <div class="wrap-input100 validate-input m-b-23">
-                    <span class="label-input100">Gender</span>
-                    <input class="input100" type="text" name="gender"
-                           value="<?php echo $user->getGender() ?>" disabled>
-                </div>
-                <br/>
 
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Email</span>

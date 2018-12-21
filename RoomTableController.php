@@ -89,6 +89,16 @@ class RoomTableController
         return false;
     }
 
+    public function updateRoom($id, $capacity, $status)
+    {
+        $query = "UPDATE rooms SET capacity='{$capacity}',statue='{$status}' WHERE  id='{$id}'";
+        $result = $this->getDB()->performQuery($query);
+        if ($result)
+            return true;
+        return false;
+    }
+
+
     public function getDB()
     {
         return $this->db;
