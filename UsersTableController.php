@@ -90,7 +90,7 @@ class UsersTableController
 
     public function updateUser($id, $first_name, $last_name, $blocked, $new_email, $mobile_number, $address)
     {
-        $query = "UPDATE users SET first_name='{$first_name}',last_name='{$last_name}',blocked='{$blocked}',email='{$new_email}',mobile_number='{$mobile_number}',address='{$address}' WHERE  id='{$id}'";
+        $query = "UPDATE users SET first_name='{$first_name}',last_name='{$last_name}',blocked={$blocked},email='{$new_email}',mobile_number='{$mobile_number}',address='{$address}' WHERE  id={$id}";
         $result = $this->getDB()->performQuery($query);
         if ($result)
             return true;

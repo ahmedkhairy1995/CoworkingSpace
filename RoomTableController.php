@@ -82,6 +82,7 @@ class RoomTableController
     public function insertRoom($capacity, $status)
     {
         $query = "INSERT INTO rooms (capacity,status) VALUES({$capacity},{$status});";
+        echo $query;
         $result = $this->getDB()->performQuery($query);
         if (isset($result)){
             return true;
@@ -91,7 +92,7 @@ class RoomTableController
 
     public function updateRoom($id, $capacity, $status)
     {
-        $query = "UPDATE rooms SET capacity='{$capacity}',statue='{$status}' WHERE  id='{$id}'";
+        $query = "UPDATE rooms SET capacity={$capacity},status={$status} WHERE  roomID={$id}";
         $result = $this->getDB()->performQuery($query);
         if ($result)
             return true;

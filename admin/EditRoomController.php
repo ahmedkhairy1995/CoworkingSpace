@@ -30,6 +30,6 @@ $result = $controller->updateRoom($ID, $capacity,$status);
 if ($result)
     redirect_to("Rooms.php?flag=1");
 else
-    redirect_to("EditRoom.php?flag=2");
+    redirect_to("EditRoom.php?flag=2&id=".$ID);
 
 ?>

@@ -35,6 +35,6 @@ $result = $controller->updateUser($ID, $firstName, $lastName, $blocked, $email, 
 if ($result)
     redirect_to("Customers.php?flag=1");
 else
-    redirect_to("EditCustomer.php?flag=2");
+    redirect_to("EditCustomer.php?flag=2&id=".$id);
 
 ?>
