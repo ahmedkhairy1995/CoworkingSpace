@@ -3,20 +3,20 @@
     if(isset($_GET['flag']))
     $flag=$_GET['flag'];
     include('Db.php');
+    require_once('ImagesTableController.php');
 ?>
 
 <?php
             
         $db=new Db();
-        $ImageArray=array();
-        $result=$db->select("Select name from images");
-        $i=0;
-        while($i<count($result))
-        {
-            $Temp=explode('\\',$result[$i]['name']);
-            $ImageArray[$i]=end($Temp);
-            $i++;    
-        }
+    $imagesTableController = ImagesTableController::getImagesTableController();
+	$images = $imagesTableController->getImages();
+	$imagesEncoded = array();
+	$i = 0;
+	while ($i < count($images)) {
+	    $imagesEncoded[$i] = base64_encode($images[$i]);
+	    $i++;
+	}
  $contactInfoArray=$db->selectContactInfo();
         ?>
 <!Doctype html>
@@ -105,7 +105,9 @@
         </div>
         
         <div id="slideshow">
-		<img src="" id="Pic" alt="Ebda3 Pictures" class="img-responsive center-block">
+		<div class="ourImageContainer">
+		<img src="" id="Pic" alt="Ebda3 Pictures" class="img img-responsive center-block">
+		</div>
         </div>
     </div>
     </fieldset>
@@ -149,25 +151,32 @@
     
  <script>
         var Image = document.getElementById("Pic");
-        var ImageArray =<?php echo json_encode($ImageArray); ?>;
+        var ImageArray =<?php echo json_encode($imagesEncoded); ?>;
         var ImageIndex = 0; 
          window.onload=function()
         {   
 
-            Image.setAttribute("src", ImageArray[ImageIndex]);
+            Image.setAttribute("src", "data:image/*;base64,"+ImageArray[ImageIndex]);
          };
-
+        $('.ourImageContainer').find('img').each(function(){
+        var imgClass = (this.width/this.height < 1) ? 'wide' : 'tall';
+        $(this).addClass(imgClass);
+        })
         var Image = document.getElementById("Pic");
     //Implementing a slideshow
 
-        var ImageArray =<?php echo json_encode($ImageArray); ?>;
+        var ImageArray =<?php echo json_encode($imagesEncoded); ?>;
         var ImageIndex = 0;
         function SlideShow() {
-            Image.setAttribute("src", ImageArray[ImageIndex]);
+            Image.setAttribute("src", "data:image/*;base64,"+ImageArray[ImageIndex]);
             ImageIndex++;
             if (ImageIndex >= ImageArray.length) {
                 ImageIndex = 0;
             }
+            $('.ourImageContainer').find('img').each(function(){
+       		var imgClass = (this.width/this.height < 1) ? 'wide' : 'tall';
+			$(this).addClass(imgClass);
+        	})
         }
         var IntervalHandler = setInterval(SlideShow, 3000);   
 

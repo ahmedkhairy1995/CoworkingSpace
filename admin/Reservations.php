@@ -83,7 +83,7 @@ $reservationController = ReservationTableController::getReservationTableControll
                echo "<td>".$reservation->getWhiteBoard()."</td>" ;
                echo "<td>".$reservation->getAC()."</td>" ;
                echo "<td>".$reservation->getCapacity()."</td>" ;
-               echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\" href=\"EditReservation.php?id=".$reservation->getReservationId()."\"style=\"line-height: 0;color:white;\"> Edit </a></td>";
+               echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\" href=\"EditReservation.php?id=".$reservation->getReservationId()."\"style=\"line-height: 0;color:white;\"> Edit </a></td>";
                echo "</tr>";
             }?>
 

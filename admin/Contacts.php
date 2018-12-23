@@ -52,7 +52,7 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
 
     <div style="padding-left: 20px; padding-right: 20px;">
         <table id="contactsTable" class="display">
-            <a class="btn btn--green full-width btn--with-shadow" href="AddContact.php"
+            <a class="btn btn-market full-width btn--with-shadow" href="AddContact.php"
                style="line-height: 0;color:white;margin-bottom: 10px; float: right !important;"> Add </a>
             <thead>
             <tr>
@@ -67,7 +67,7 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
             foreach ($contacts as $contact) {
                 echo "<tr><td>" . $contact->getId() . "</td>";
                 echo "<td>" . $contact->getContactNum() . "</td>";
-                echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\" href=\"EditContact.php?id=" . $contact->getId() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
+                echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\" href=\"EditContact.php?id=" . $contact->getId() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
                 echo "</tr>";
             } ?>
 

@@ -193,6 +193,7 @@ iframe {
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
+    opacity: 0.8;
 }
 
 .login100-form {

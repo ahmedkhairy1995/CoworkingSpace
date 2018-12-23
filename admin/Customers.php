@@ -79,7 +79,7 @@ $userController = UsersTableController::getUsersTableController();
                 echo "<td>".$user->getMobileNumber()."</td>" ;
                 echo "<td>".$user->getAddress()."</td>" ;
                 echo "<td>".$user->getBlocked()."</td>" ;
-                echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\" href=\"EditCustomer.php?id=".$user->getId()."\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
+                echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\" href=\"EditCustomer.php?id=".$user->getId()."\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
                 echo "</tr>";
             }?>
 

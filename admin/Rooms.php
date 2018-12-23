@@ -54,7 +54,7 @@ $roomController = RoomTableController::getRoomTableController();
     <div style="padding-left: 20px; padding-right: 20px;">
         <br/>
         <table id="roomsTable" class="display">
-                <a class="btn btn--green full-width btn--with-shadow" href="AddRoom.php"
+                <a class="btn btn-market full-width btn--with-shadow" href="AddRoom.php"
                    style="line-height: 0;color:white;margin-bottom: 10px; float: right !important;"> Add </a>
             <thead>
             <tr>
@@ -71,7 +71,7 @@ $roomController = RoomTableController::getRoomTableController();
                 echo "<tr><td>" . $room->getRoomID() . "</td>";
                 echo "<td>" . $room->getCapacity() . "</td>";
                 echo "<td>" . $room->getStatus() . "</td>";
-                echo " <td style=\"width: 5%;\"><a class=\"btn btn--primary full-width btn--with-shadow\"  href=\"EditRoom.php?id=" . $room->getRoomID() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
+                echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\"  href=\"EditRoom.php?id=" . $room->getRoomID() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
                 echo "</tr>";
             } ?>
 

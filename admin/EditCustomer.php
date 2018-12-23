@@ -34,6 +34,7 @@ if (!isset($user))
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/blocks.css">
     <link rel="stylesheet" href="css/header-user-dropdown.css">
 </head>
 <body>
@@ -114,10 +115,7 @@ if (!isset($user))
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
-                            Edit
-                        </button>
+                         <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow" value="EDIT" style="width: 100%;text-align: center;">
                     </div>
                 </div>
 

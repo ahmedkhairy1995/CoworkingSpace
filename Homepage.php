@@ -10,13 +10,11 @@ require_once('ImagesTableController.php');
 $contactInfoController = ContactInfoTableController::getContactInfoTableController();
 $imagesTableController = ImagesTableController::getImagesTableController();
 $contacts = $contactInfoController->getAllContacts();
-$images = $imagesTableController->getAllImages();
-
-$ImagePaths = array();
+$images = $imagesTableController->getImages();
+$imagesEncoded = array();
 $i = 0;
 while ($i < count($images)) {
-    $temp = explode('\\', $images[$i]->getName());
-    $ImagePaths[$i] = end($temp);
+    $imagesEncoded[$i] = base64_encode($images[$i]);
     $i++;
 }
 ?>
@@ -95,7 +93,9 @@ while ($i < count($images)) {
 </section>
 
 <aside>
-    <img src="" id="Pic" alt="Ebda3 Pictures" class="img-responsive center-block">
+    <div class ="ourImageContainer">
+    <img src="" id="Pic" alt="Ebda3 Pictures" class="img img-responsive center-block"  width="100%" height="100%">
+    </div>
 </aside>
 
 <footer class="footer-distributed col-xs-2 col-sm-6 col-md-8 col-lg-12">
@@ -173,21 +173,27 @@ while ($i < count($images)) {
 
     window.onload = function () {
         Image = document.getElementById("Pic");
-        ImageArray =<?php echo json_encode($ImagePaths); ?>;
+        ImageArray =<?php echo json_encode($imagesEncoded); ?>;
         ImageIndex = 0;
-
-        Image.setAttribute("src", ImageArray[ImageIndex]);
-
+        Image.setAttribute("src", "data:image/*;base64,"+ImageArray[ImageIndex]);
         var IntervalHandler = setInterval(SlideShow, 3000);
+        $('.ourImageContainer').find('img').each(function(){
+        var imgClass = (this.width/this.height < 1) ? 'wide' : 'tall';
+        $(this).addClass(imgClass);
+        })
     };
 
     //Slide Show
     function SlideShow() {
-        Image.setAttribute("src", ImageArray[ImageIndex]);
+        Image.setAttribute("src", "data:image/*;base64,"+ImageArray[ImageIndex]);
         ImageIndex++;
         if (ImageIndex >= ImageArray.length) {
             ImageIndex = 0;
         }
+        $('.ourImageContainer').find('img').each(function(){
+        var imgClass = (this.width/this.height < 1) ? 'wide' : 'tall';
+        $(this).addClass(imgClass);
+        })
     }
 </script>
 </body>

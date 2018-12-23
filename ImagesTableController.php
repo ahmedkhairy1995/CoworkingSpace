@@ -39,6 +39,20 @@ class ImagesTableController
         }
     }
 
+    public function getImages()
+    {
+        $result = $this->db->performQuery("SELECT * FROM images");
+        if (isset($result) && isset(self::$controller)) {
+            $object_Array = array();
+            while ($row = $this->db->fetchArray($result)) {
+                // header("Content-type: image/jpg"); 
+                $object_Array[] = $row['Image']; 
+                // $image = ImagesModel::instantiate($row);
+                // $object_Array[] = $image;
+            }
+            return $object_Array;
+        }
+    }
     public function getImageById($id)
     {
         $result = $this->db->performQuery("SELECT * FROM images where imageID={$id}");
@@ -54,6 +68,23 @@ class ImagesTableController
         }
     }
 
+    public function getImagesCount()
+    {
+        $result = $this->db->performQuery("SELECT count(*) as count FROM images ");
+        if (isset($result)) {
+            $row = $this->db->fetchArray($result);
+            return $row['count'];
+        }
+    }
+    public function insertImage($image,$path)
+    {
+        $query = "INSERT INTO images (Image,name) VALUES('{$image}','{$path}');";
+        $result = $this->getDB()->performQuery($query);
+        if (isset($result)){
+            return true;
+        }
+        return false;
+    }
     public function getDB()
     {
         return $this->db;

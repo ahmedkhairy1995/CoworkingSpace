@@ -28,6 +28,7 @@ if (!isset($_SESSION['admin'])) {
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/blocks.css">
     <link rel="stylesheet" href="css/header-user-dropdown.css">
 </head>
 <body>
@@ -53,11 +54,7 @@ if (!isset($_SESSION['admin'])) {
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
-                            Add
-                        </button>
+                     <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow" value="Add" style="width: 100%;text-align: center;">
                     </div>
                 </div>
 
