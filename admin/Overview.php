@@ -12,6 +12,13 @@ if (!isset($_SESSION['admin'])) {
 
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
+require_once("../ReservationTableController.php");
+require_once("../UsersTableController.php");
+require_once("../RoomTableController.php");
+$resevationController = ReservationTableController::getReservationTableController();
+$usersController = UsersTableController::getUsersTableController();
+$roomsController = RoomTableController::getRoomTableController();
+
 ?>
 
 <!doctype html>
@@ -71,7 +78,7 @@ if (isset($_GET['flag']))
                                 <i class="pe-7s-ticket"></i>
                             </div>
                             <div class="stat-content">
-                                <div class="stat-text"><span class="count">3435</span></div>
+                                <div class="stat-text"><span class="count"><?php echo $resevationController->getCount();?></span></div>
                                 <div class="stat-heading">Reservations</div>
                             </div>
                         </div>
@@ -87,7 +94,7 @@ if (isset($_GET['flag']))
                                 <i class="pe-7s-home"></i>
                             </div>
                             <div class="stat-content">
-                                <div class="stat-text"><span class="count">349</span></div>
+                                <div class="stat-text"><span class="count"><?php echo $roomsController->getCount();?></span></div>
                                 <div class="stat-heading">Rooms</div>
                             </div>
                         </div>
@@ -103,7 +110,7 @@ if (isset($_GET['flag']))
                                 <i class="pe-7s-users"></i>
                             </div>
                             <div class="stat-content">
-                                <div class="stat-text"><span class="count">2986</span></div>
+                                <div class="stat-text"><span class="count"><?php echo $usersController->getCount();?></span></div>
                                 <div class="stat-heading">Users</div>
                             </div>
                         </div>
