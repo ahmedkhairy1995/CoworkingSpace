@@ -64,7 +64,6 @@ $contacts = $contactInfoController->getAllContacts();
             <input type="checkbox" name="remember_email" id="remember_email"  class="login-form-checkbox float-left">
             <label class="login-form-label float-left text-light" for="remember_email">Remember email</label><br><br>-->
 
-            <p><a href="ForgotPassword.php">Forgot your password ?</a></p><br>
             <p>Don't have an account ?<a href="SignUp.php">Click Here</a></p>
         </form>
     </div>
