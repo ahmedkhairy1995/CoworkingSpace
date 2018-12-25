@@ -62,7 +62,7 @@ $roomsController = RoomTableController::getRoomTableController();
                                 <i class="pe-7s-cash"></i>
                             </div>
                             <div class="stat-content">
-                                <div class="stat-text">$<span class="count">23569</span></div>
+                                <div class="stat-text">$<span class="count"><?php echo $resevationController->getRevenue();?></span></div>
                                 <div class="stat-heading">Revenue</div>
                             </div>
                         </div>
