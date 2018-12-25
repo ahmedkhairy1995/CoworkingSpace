@@ -13,7 +13,7 @@ $contacts = $contactInfoController->getAllContacts();
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="description" content="Create your Ebdaa Account"/>
+    <link rel="icon" type="image/png" href="logo.jpg"/>
     <title>Sign Up</title>
 
     <!--Applying an external stylesheet-->

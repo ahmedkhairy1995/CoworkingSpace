@@ -35,6 +35,7 @@ $contacts = $contactInfoController->getAllContacts();
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Book a room"/>
+    <link rel="icon" type="image/png" href="logo.jpg"/>
     <title>Book a room</title>
     <!--Applying an external stylesheet-->
     <link rel="stylesheet" href="css/font-awesome.min.css">

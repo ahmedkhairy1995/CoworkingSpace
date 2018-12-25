@@ -59,7 +59,7 @@ if ($reservation != null) {
     <meta charset="utf-8"/>
     <meta name="description" content="Book a room"/>
     <title>Book a room</title>
-
+    <link rel="icon" type="image/png" href="logo.jpg"/>
     <!--Applying an external stylesheet-->
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="sweetalert/dist/sweetalert.min.js"></script>

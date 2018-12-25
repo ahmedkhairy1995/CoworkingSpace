@@ -15,7 +15,7 @@ $contacts = $contactInfoController->getAllContacts();
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="description" content="Login to Ebdaa"/>
+    <link rel="icon" type="image/png" href="logo.jpg"/>
     <title>Login</title>
 
     <!--Applying an external stylesheet-->
