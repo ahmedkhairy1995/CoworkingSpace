@@ -174,7 +174,6 @@ if (!isset($reservation))
         }
     }
 
-
     javaScriptVar = "<?php echo $flag; ?>";
 
     if (javaScriptVar === "2") {

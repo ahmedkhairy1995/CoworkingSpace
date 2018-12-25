@@ -140,7 +140,6 @@ $contacts = $contactInfoController->getAllContacts();
     const toTime = document.forms["LoginForm"]["to"];
 
     function validateForm() {
-
         if (toTime.value <= fromTime.value) {
             swal("Invalid Time", "From and To times are conflicting", "error");
             return false;

@@ -142,7 +142,6 @@ $contacts = $contactInfoController->getAllContacts();
         else if (javaScriptVar === "7")
             swal("Wrong Address format ", "Please reenter your address", "error");
 
-        //First and Last names validation
         let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
         let passwordPattern1 = /[0-9]+/;
         let passwordPattern2 = /[a-z]+/;
