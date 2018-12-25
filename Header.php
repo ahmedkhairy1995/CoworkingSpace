@@ -6,11 +6,12 @@
             <div class="row" style="display: inline-flex;margin-top: 7%;">
                 <div class="col-1"><img id="Logo" src="logo.jpg" alt="Logo" style="width: 50%;height: auto;"></div>
                 <div class="col-1"><a href="Homepage.php" title="Homepage" role="button">Homepage</a></div>
-                <div class="col-1"><a href="Reservation.php" title="" role="button">Book A Room</a>
+                <div class="col-1"><a href="Reservation.php" title="Reservation" role="button">Book A Room</a>
                 </div>
-                <div class="col-1"><a href="ViewReservation.php" title="" role="button">My Reservations</a>
+                <div class="col-1"><a href="ViewReservation.php" title="View Reservation" role="button">My
+                        Reservations</a>
                 </div>
-                <div class="col-1"><a href="AboutUs.php" title="" role="button">About Us</a>
+                <div class="col-1"><a href="AboutUs.php" title="About Us" role="button">About Us</a>
                 </div>
 
 
