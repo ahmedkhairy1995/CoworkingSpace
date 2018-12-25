@@ -1,5 +1,6 @@
 <?php
 session_start();
+$flag = -1;
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 

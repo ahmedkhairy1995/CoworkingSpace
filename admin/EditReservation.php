@@ -20,6 +20,7 @@ require_once('../RoomTableController.php');
 $reservationController = ReservationTableController::getReservationTableController();
 $roomsController = RoomTableController::getRoomTableController();
 $reservationId = $_GET['id'];
+$flag = -1;
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 $reservation = $reservationController->getReservationById($reservationId);

@@ -9,6 +9,9 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
 }
+$flag = -1;
+if (isset($_GET['flag']))
+    $flag = $_GET['flag'];
 require_once('../RoomTableController.php');
 $roomController = RoomTableController::getRoomTableController();
 ?>

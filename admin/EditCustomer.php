@@ -18,6 +18,7 @@ if (!isset($_SESSION['admin'])) {
 require_once('../UsersTableController.php');
 $userController = UsersTableController::getUsersTableController();
 $userId = $_GET['id'];
+$flag = -1;
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 $user = $userController->getUserByID($userId);
