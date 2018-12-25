@@ -58,7 +58,7 @@ while ($i < count($images)) {
                     capability, way of thinking and skills needed to perform effectively.</h3>
 
                 <h1>Mission</h1>
-                <h3>"EBDA3" is our mission.
+                <h3>Innovation is our mission.
                     We simply aim to develop the way of thinking, working and performing of any task.
                     How is this achieved?
                     By providing our applicants with courses tutored by professional certified
@@ -70,7 +70,7 @@ while ($i < count($images)) {
 
             <div id="slideshow">
                 <div class="ourImageContainer">
-                    <img src="" id="Pic" alt="Ebda3 Pictures" class="img img-responsive center-block">
+                    <img src="" id="Pic" alt="Pictures" class="img img-responsive center-block">
                 </div>
             </div>
         </div>

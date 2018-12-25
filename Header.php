@@ -9,7 +9,7 @@
             <a href="ViewReservation.php" title="" role="button">My Reservations</a>
             <a href="AboutUs.php" title="" role="button">About Us</a>
             <?php if (isset($_SESSION['name'])) { ?>
-                <div style="margin-left: 100px;" class="dropdown">
+                <div class="dropdown">
                     <a href="" title="" class="btn" role="button" data-toggle="dropdown"
                        id="menu" aria-haspopup="true"
                        aria-expanded="true">
