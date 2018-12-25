@@ -34,6 +34,7 @@ $contacts = $contactInfoController->getAllContacts();
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
+    <script src="sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
@@ -149,9 +150,8 @@ $contacts = $contactInfoController->getAllContacts();
 <?php include("Footer.php") ?>
 
 <!--Applying an external javascript-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"/>
-<script src="js/SignUpScript.js"/>
-
+<script src="js/jquery-3.2.0.js"></script>
+<script src="js/SignUpScript.js"></script>
 <script>
 
     javaScriptVar = "<?php echo $flag; ?>";
