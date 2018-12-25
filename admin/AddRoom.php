@@ -15,8 +15,9 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
 }
-$flag =  $_GET['flag'];
 
+if (isset($_GET['flag']))
+    $flag = $_GET['flag'];
 ?>
 
 <!DOCTYPE html>

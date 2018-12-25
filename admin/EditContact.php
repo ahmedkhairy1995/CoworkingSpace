@@ -18,7 +18,8 @@ if (!isset($_SESSION['admin'])) {
 require_once('../ContactInfoTableController.php');
 $contactController = ContactInfoTableController::getContactInfoTableController();
 $contactId = $_GET['id'];
-$flag =  $_GET['flag'];
+if (isset($_GET['flag']))
+    $flag = $_GET['flag'];
 $contact = $contactController->getContactById($contactId);
 if (!isset($contact))
     redirect_to("Overview.php?flag=0");

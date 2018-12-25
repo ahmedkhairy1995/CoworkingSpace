@@ -17,7 +17,9 @@ if (!isset($_SESSION['admin'])) {
 }
 require_once('../RoomTableController.php');
 $roomsController = RoomTableController::getRoomTableController();
-$flag =  $_GET['flag'];
+
+if (isset($_GET['flag']))
+    $flag = $_GET['flag'];
 $roomId = $_GET['id'];
 $room = $roomsController->getRoomByID($roomId);
 if (!isset($room))

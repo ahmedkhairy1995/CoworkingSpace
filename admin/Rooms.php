@@ -38,6 +38,9 @@ $roomController = RoomTableController::getRoomTableController();
     <link rel="stylesheet" type="text/css" href="css/blocks.css">
     <link rel="stylesheet" href="css/header-user-dropdown.css">
 
+    <script src="../sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../sweetalert/dist/sweetalert.css">
+
 
 </head>
 
@@ -93,7 +96,7 @@ $roomController = RoomTableController::getRoomTableController();
         swal("Congrats", "Room Deleted Successfully ", "success");
     }
     else if (javaScriptVar === "3") {
-        swal("Error", "Can't delete contact try again! ", "error");
+        swal("Error", "Can't delete room try again! ", "error");
     }
 
 </script>

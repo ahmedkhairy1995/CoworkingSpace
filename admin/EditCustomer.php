@@ -18,7 +18,8 @@ if (!isset($_SESSION['admin'])) {
 require_once('../UsersTableController.php');
 $userController = UsersTableController::getUsersTableController();
 $userId = $_GET['id'];
-$flag =  $_GET['flag'];
+if (isset($_GET['flag']))
+    $flag = $_GET['flag'];
 $user = $userController->getUserByID($userId);
 if (!isset($user))
     redirect_to("Overview.php?flag=0");

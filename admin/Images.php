@@ -10,6 +10,8 @@ if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
 }
 
+if (isset($_GET['flag']))
+    $flag = $_GET['flag'];
 require_once('../ImagesTableController.php');
 $controller = ImagesTableController::getImagesTableController();
 $images = $controller->getAllImages();
@@ -33,6 +35,10 @@ $count = $controller->getImagesCount();
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script src="../sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../sweetalert/dist/sweetalert.css">
+
 </head>
 
 <body>
@@ -71,12 +77,12 @@ $count = $controller->getImagesCount();
                     if ($x == 0) {
                         echo "<div class=\"carousel-item active\">
                         <img src='data:image/*;base64," . base64_encode($image->getImage()) . "'>
-                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteContactController.php?id=".$image->getImageId()."'style ='line-height: 0;color:white;'> Delete </a >
+                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteImageController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;'> Delete </a >
                               </div>";
                     } else {
                         echo "<div class=\"carousel-item\">
                                         <img src='data:image/*;base64," . base64_encode($image->getImage()) . "'>
-                                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteContactController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;'> Delete </a >
+                                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteImageController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;'> Delete </a >
                                     </div>";
                     }
                     $x++;
@@ -97,5 +103,16 @@ $count = $controller->getImagesCount();
         </div>
 
     </div>
+    <script>
+        javaScriptVar = "<?php echo $flag; ?>";
+
+        if (javaScriptVar === "4") {
+            swal("Congrats", "Image Deleted Successfully ", "success");
+        }
+        else if (javaScriptVar === "3") {
+            swal("Error", "Can't delete Image try again! ", "error");
+        }
+
+    </script>
 </body>
 </html>

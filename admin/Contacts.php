@@ -5,6 +5,8 @@ function redirect_to($newlocation)
     exit;
 }
 
+if (isset($_GET['flag']))
+    $flag = $_GET['flag'];
 session_start();
 if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
