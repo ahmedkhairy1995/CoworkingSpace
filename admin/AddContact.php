@@ -17,7 +17,7 @@ if (!isset($_SESSION['admin'])) {
 }
 $flag = -1;
 if (isset($_GET['flag']))
-    $flag = $_GET['flag'];?>
+    $flag = $_GET['flag']; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,8 @@ if (isset($_GET['flag']))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="AddContactController.php">
+            <form class="login100-form validate-form" method="post" name="AddContactForm"
+                  onsubmit="return validateForm()" action="AddContactController.php">
 					<span class="login100-form-title p-b-49">
 						Add Contact Info
 					</span>
@@ -58,24 +59,37 @@ if (isset($_GET['flag']))
                 </div>
 
                 <div class="container-login100-form-btn">
-                     <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow" value="Add" style="width: 100%;text-align: center;">
-                    </div>
+                    <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow" value="Add"
+                           style="width: 100%;text-align: center;">
                 </div>
-
-            </form>
         </div>
+
+        </form>
     </div>
+</div>
 </div>
 
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
+    let mobilePattern = /^[0-9]{11}$/;
+    const mobileNumberElement = document.forms["AddContactForm"]["contactNum"];
+    mobileNumberElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+
+    function validateForm() {
+        if (!mobilePattern.test(mobileNumberElement.value.toString().trim())) {
+            mobileNumberElement.setCustomValidity("Enter a valid mobile number");
+            return false;
+        }
+    }
+
     javaScriptVar = "<?php echo $flag; ?>";
     if (javaScriptVar === "1") {
         swal("Wrong Mobile Format", "Please reenter the number ", "error");
-    }
-    else if (javaScriptVar === "2") {
+    } else if (javaScriptVar === "2") {
         swal("Database Error", "Please try again", "error");
     }
 

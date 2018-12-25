@@ -170,49 +170,50 @@ $contacts = $contactInfoController->getAllContacts();
     else if (javaScriptVar === "7")
         swal("Wrong Address format ", "Please reenter your address", "error");
 
+    //First and Last names validation
+    let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
+    let passwordPattern1 = /[0-9]+/;
+    let passwordPattern2 = /[a-z]+/;
+    let passwordPattern3 = /[A-Z]+/;
+    let addressPattern = /^\d+ [a-zA-Z .,]+$/;
+    let mobilePattern = /^[0-9]{11}$/;
+    const firstNameElement = document.forms["EditProfileForm"]["FirstName"];
+    const lastNameElement = document.forms["EditProfileForm"]["LastName"];
+    const passwordElement = document.forms["EditProfileForm"]["Password"];
+    const newPasswordElement = document.forms["EditProfileForm"]["NewPassword"];
+    const newPasswordConfirmationElement = document.forms["EditProfileForm"]["ConfirmNewPassword"];
+    const mobileNumberElement = document.forms["EditProfileForm"]["MobileNumber"];
+    const addressElement = document.forms["EditProfileForm"]["Address"];
+    const emailElement = document.forms["EditProfileForm"]["Email"];
+    const confirmEmailElement = document.forms["EditProfileForm"]["EmailConfirmation"];
+
+    firstNameElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    lastNameElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    passwordElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    newPasswordElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    newPasswordConfirmationElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    addressElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    mobileNumberElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    confirmEmailElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+
+
     function validateForm() {
-        //First and Last names validation
-        let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
-        let passwordPattern1 = /[0-9]+/;
-        let passwordPattern2 = /[a-z]+/;
-        let passwordPattern3 = /[A-Z]+/;
-        let addressPattern = /^\d+ [a-zA-Z .,]+$/;
-        let mobilePattern = /^[0-9]{11}$/;
-        const firstNameElement = document.forms["EditProfileForm"]["FirstName"];
-        const lastNameElement = document.forms["EditProfileForm"]["LastName"];
-        const passwordElement = document.forms["EditProfileForm"]["Password"];
-        const newPasswordElement = document.forms["EditProfileForm"]["NewPassword"];
-        const newPasswordConfirmationElement = document.forms["EditProfileForm"]["ConfirmNewPassword"];
-        const mobileNumberElement = document.forms["EditProfileForm"]["MobileNumber"];
-        const addressElement = document.forms["EditProfileForm"]["Address"];
-        const emailElement = document.forms["EditProfileForm"]["Email"];
-        const confirmEmailElement = document.forms["EditProfileForm"]["EmailConfirmation"];
-
-        firstNameElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        lastNameElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        passwordElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        newPasswordElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        newPasswordConfirmationElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        addressElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        mobileNumberElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        confirmEmailElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-
         if (!namePattern.test(firstNameElement.value.toString().trim())) {
             firstNameElement.setCustomValidity("Enter a valid name");
             return false;

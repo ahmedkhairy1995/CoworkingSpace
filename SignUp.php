@@ -142,46 +142,45 @@ $contacts = $contactInfoController->getAllContacts();
         else if (javaScriptVar === "7")
             swal("Wrong Address format ", "Please reenter your address", "error");
 
+        //First and Last names validation
+        let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
+        let passwordPattern1 = /[0-9]+/;
+        let passwordPattern2 = /[a-z]+/;
+        let passwordPattern3 = /[A-Z]+/;
+        let addressPattern = /^\d+ [a-zA-Z .,]+$/;
+        let mobilePattern = /^[0-9]{11}$/;
+        const firstNameElement = document.forms["SignUpForm"]["FirstName"];
+        const lastNameElement = document.forms["SignUpForm"]["LastName"];
+        const passwordElement = document.forms["SignUpForm"]["Password"];
+        const passwordConfirmationElement = document.forms["SignUpForm"]["PasswordConfirmation"];
+        const addressElement = document.forms["SignUpForm"]["Address"];
+        const mobileNumberElement = document.forms["SignUpForm"]["MobileNumber"];
+        const emailElement = document.forms["SignUpForm"]["Email"];
+        const confirmEmailElement = document.forms["SignUpForm"]["EmailConfirmation"];
+
+        firstNameElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        lastNameElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        passwordElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        passwordConfirmationElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        addressElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        mobileNumberElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        confirmEmailElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
 
         function validateForm() {
-            //First and Last names validation
-            let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
-            let passwordPattern1 = /[0-9]+/;
-            let passwordPattern2 = /[a-z]+/;
-            let passwordPattern3 = /[A-Z]+/;
-            let addressPattern = /^\d+ [a-zA-Z .,]+$/;
-            let mobilePattern = /^[0-9]{11}$/;
-            const firstNameElement = document.forms["SignUpForm"]["FirstName"];
-            const lastNameElement = document.forms["SignUpForm"]["LastName"];
-            const passwordElement = document.forms["SignUpForm"]["Password"];
-            const passwordConfirmationElement = document.forms["SignUpForm"]["PasswordConfirmation"];
-            const addressElement = document.forms["SignUpForm"]["Address"];
-            const mobileNumberElement = document.forms["SignUpForm"]["MobileNumber"];
-            const emailElement = document.forms["SignUpForm"]["Email"];
-            const confirmEmailElement = document.forms["SignUpForm"]["EmailConfirmation"];
-
-            firstNameElement.oninput = function (e) {
-                e.target.setCustomValidity("");
-            };
-            lastNameElement.oninput = function (e) {
-                e.target.setCustomValidity("");
-            };
-            passwordElement.oninput = function (e) {
-                e.target.setCustomValidity("");
-            };
-            passwordConfirmationElement.oninput = function (e) {
-                e.target.setCustomValidity("");
-            };
-            addressElement.oninput = function (e) {
-                e.target.setCustomValidity("");
-            };
-            mobileNumberElement.oninput = function (e) {
-                e.target.setCustomValidity("");
-            };
-            confirmEmailElement.oninput = function (e) {
-                e.target.setCustomValidity("");
-            };
-
             if (!namePattern.test(firstNameElement.value.toString().trim())) {
                 firstNameElement.setCustomValidity("Enter a valid name");
                 return false;

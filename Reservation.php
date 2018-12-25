@@ -136,10 +136,10 @@ $contacts = $contactInfoController->getAllContacts();
 
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("DatePicker").setAttribute("min", today);
+    const fromTime = document.forms["LoginForm"]["from"];
+    const toTime = document.forms["LoginForm"]["to"];
 
     function validateForm() {
-        const fromTime = document.forms["LoginForm"]["from"];
-        const toTime = document.forms["LoginForm"]["to"];
 
         if (toTime.value <= fromTime.value) {
             swal("Invalid Time", "From and To times are conflicting", "error");

@@ -135,6 +135,27 @@ if (!isset($user))
 <script src="js/bootstrap.min.js"></script>
 
 <script>
+    //First and Last names validation
+    let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
+    let addressPattern = /^\d+ [a-zA-Z .,]+$/;
+    let mobilePattern = /^[0-9]{11}$/;
+    const firstNameElement = document.forms["EditCustForm"]["firstName"];
+    const lastNameElement = document.forms["EditCustForm"]["lastName"];
+    const mobileNumberElement = document.forms["EditCustForm"]["mobileNumber"];
+    const addressElement = document.forms["EditCustForm"]["address"];
+
+    firstNameElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    lastNameElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    addressElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
+    mobileNumberElement.oninput = function (e) {
+        e.target.setCustomValidity("");
+    };
 
     javaScriptVar = "<?php echo $flag; ?>";
     if (javaScriptVar === "3")
@@ -149,28 +170,6 @@ if (!isset($user))
         swal("Database error ", "Please try again", "error");
 
     function validateForm() {
-        //First and Last names validation
-        let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
-        let addressPattern = /^\d+ [a-zA-Z .,]+$/;
-        let mobilePattern = /^[0-9]{11}$/;
-        const firstNameElement = document.forms["EditCustForm"]["firstName"];
-        const lastNameElement = document.forms["EditCustForm"]["lastName"];
-        const mobileNumberElement = document.forms["EditCustForm"]["mobileNumber"];
-        const addressElement = document.forms["EditCustForm"]["address"];
-
-        firstNameElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        lastNameElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        addressElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-        mobileNumberElement.oninput = function (e) {
-            e.target.setCustomValidity("");
-        };
-
         if (!namePattern.test(firstNameElement.value.toString().trim())) {
             firstNameElement.setCustomValidity("Enter a valid name");
             return false;

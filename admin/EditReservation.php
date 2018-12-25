@@ -164,10 +164,10 @@ if (!isset($reservation))
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("DatePicker").setAttribute("min", today);
 
-    function validateForm() {
-        const fromTime = document.forms["EditReservationForm"]["from"];
-        const toTime = document.forms["EditReservationForm"]["to"];
+    const fromTime = document.forms["EditReservationForm"]["from"];
+    const toTime = document.forms["EditReservationForm"]["to"];
 
+    function validateForm() {
         if (toTime.value <= fromTime.value) {
             swal("Invalid Time", "From and To times are conflicting", "error");
             return false;
