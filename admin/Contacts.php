@@ -70,7 +70,7 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
             <?php $contacts = $contactController->getAllContacts();
             foreach ($contacts as $contact) {
                 echo "<tr><td>" . $contact->getId() . "</td>";
-                echo "<td>" . $contact->getContactNum() . "</td>";
+                echo "<td> 0" . $contact->getContactNum() . "</td>";
                 echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\" href=\"DeleteContactController.php?id=" . $contact->getId() . "\" style=\"line-height: 0;color:white;\"> Delete </a></td>";
                 echo "</tr>";
             } ?>

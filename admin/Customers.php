@@ -80,7 +80,7 @@ $userController = UsersTableController::getUsersTableController();
                 echo "<td>".$user->getEmail()."</td>" ;
                 echo "<td>".$user->getBirthday()."</td>" ;
                 echo "<td>".$user->getGender()."</td>" ;
-                echo "<td>".$user->getMobileNumber()."</td>" ;
+                echo "<td>0".$user->getMobileNumber()."</td>" ;
                 echo "<td>".$user->getAddress()."</td>" ;
                 echo "<td>".$user->getBlocked()."</td>" ;
                 echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\" href=\"EditCustomer.php?id=".$user->getId()."\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
