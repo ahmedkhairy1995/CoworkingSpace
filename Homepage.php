@@ -45,57 +45,21 @@ while ($i < count($images)) {
 </head>
 
 <body>
-
-<!--logo of the co-working space-->
-<img id="Logo" src="logo.jpg" alt="Logo">
-<!--Main Menu Navigation Tabs-->
-<div id="MenuTab">
-    <nav id="MainMenuNavigation" class="nav nav-tabs-justified">
-        <div class="cl-effect-14">
-            <a href="Homepage.php" title="Homepage" role="button">Homepage</a>
-            <a href="Reservation.php" title="" role="button">Book A Room</a>
-            <a href="ViewReservation.php" title="" role="button">My Reservations</a>
-            <a href="AboutUs.php" title="" role="button">About Us</a>
-            <?php
-            if (!isset($_SESSION['views']))
-            {
-                ?>
-                <a href="LoginPage.php" title="" role="button">Login</a>
-                <?php
-            }
-            else
-            {
-            ?>
-            <div class="dropdown">
-                <a href="" title="" class="btn" role="button" data-toggle="dropdown" id="menu" aria-haspopup="true"
-                   aria-expanded="true">
-                    <?php echo $_SESSION['name'] ?>
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="menu">
-                    <li><a href="EditProfile.php" title="">Edit Profile</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="LogOut.php" title="" id="logout">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-        <?php
-        }
-        ?>
-    </nav>
-</div>
+<?php
+include("Header.php")
+?>
 <section class="MainSection">
     <h1 class="Title">CoworkingSpace</h1>
     <p class="Description">Not just an office but a community of networks that help you make your DREAMS come true</p>
 </section>
 
 <aside>
-    <div class ="ourImageContainer">
-    <img src="" id="Pic" alt="Ebda3 Pictures" class="img img-responsive center-block"  width="100%" height="100%">
+    <div class="ourImageContainer">
+        <img src="" id="Pic" alt="Ebda3 Pictures" class="img img-responsive center-block" width="100%" height="100%">
     </div>
 </aside>
 
-<?php include("Footer.php")?>
+<?php include("Footer.php") ?>
 <script>
     /*swal({
           title: "Good Evening!",
@@ -136,24 +100,24 @@ while ($i < count($images)) {
         Image = document.getElementById("Pic");
         ImageArray =<?php echo json_encode($imagesEncoded); ?>;
         ImageIndex = 0;
-        Image.setAttribute("src", "data:image/*;base64,"+ImageArray[ImageIndex]);
+        Image.setAttribute("src", "data:image/*;base64," + ImageArray[ImageIndex]);
         var IntervalHandler = setInterval(SlideShow, 3000);
-        $('.ourImageContainer').find('img').each(function(){
-        var imgClass = (this.width/this.height < 1) ? 'wide' : 'tall';
-        $(this).addClass(imgClass);
+        $('.ourImageContainer').find('img').each(function () {
+            var imgClass = (this.width / this.height < 1) ? 'wide' : 'tall';
+            $(this).addClass(imgClass);
         })
     };
 
     //Slide Show
     function SlideShow() {
-        Image.setAttribute("src", "data:image/*;base64,"+ImageArray[ImageIndex]);
+        Image.setAttribute("src", "data:image/*;base64," + ImageArray[ImageIndex]);
         ImageIndex++;
         if (ImageIndex >= ImageArray.length) {
             ImageIndex = 0;
         }
-        $('.ourImageContainer').find('img').each(function(){
-        var imgClass = (this.width/this.height < 1) ? 'wide' : 'tall';
-        $(this).addClass(imgClass);
+        $('.ourImageContainer').find('img').each(function () {
+            var imgClass = (this.width / this.height < 1) ? 'wide' : 'tall';
+            $(this).addClass(imgClass);
         })
     }
 </script>
