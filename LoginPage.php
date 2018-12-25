@@ -34,7 +34,7 @@ $contacts = $contactInfoController->getAllContacts();
 
 <div id="body">
 
-    <?php include("Header.php")?>
+    <?php include("Header.php") ?>
     <div id="LoginSpan">
         <span>Sign in to continue to CoworkingSpace</span>
     </div>
@@ -71,19 +71,18 @@ $contacts = $contactInfoController->getAllContacts();
 
 </div>
 
-<?php include("Footer.php")?>
+<?php include("Footer.php") ?>
 
 
 <!--Applying an external javascript-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="LoginScript.js"></script>
+<script src="js/LoginScript.js"></script>
 
 <script>
     javaScriptVar = "<?php echo $flag; ?>";
     if (javaScriptVar === "42") {
         swal("Wrong Password", "Please re-enter your password", "error");
-    }
-    else if (javaScriptVar === "41") {
+    } else if (javaScriptVar === "41") {
         swal("Invalid Email", "Please enter valid email", "error");
     } else if (javaScriptVar === "1") {
         swal("Wrong Email format ", "Please reenter your email", "error");
