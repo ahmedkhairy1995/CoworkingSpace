@@ -53,7 +53,7 @@ $reservationController = ReservationTableController::getReservationTableControll
 
 <div style="position: relative;">
     <!-- Header Replace it with a header -->
-	<?php include("header-user-dropdown.php") ?>
+	<?php include("adminheader.php") ?>
 	<br/>
     <h2 style="text-align: center">Reservations</h2>
 

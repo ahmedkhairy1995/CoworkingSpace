@@ -44,7 +44,7 @@ $count = $controller->getImagesCount();
 <body>
 <div style="position: relative;">
     <!-- Header Replace it with a header -->
-    <?php include("header-user-dropdown.php"); ?>
+    <?php include("adminheader.php"); ?>
     <br/>
     <div class="container">
 
