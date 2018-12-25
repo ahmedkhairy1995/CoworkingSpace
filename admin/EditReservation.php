@@ -49,7 +49,8 @@ if (!isset($reservation))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="EditReservationController.php"
+            <form class="login100-form validate-form" name="EditReservationForm" method="post"
+                  action="EditReservationController.php"
                   onsubmit="return validateForm()">
 					<span class="login100-form-title p-b-49">
 						Edit Reservation
@@ -164,8 +165,8 @@ if (!isset($reservation))
     document.getElementById("DatePicker").setAttribute("min", today);
 
     function validateForm() {
-        const fromTime = document.forms["LoginForm"]["from"];
-        const toTime = document.forms["LoginForm"]["to"];
+        const fromTime = document.forms["EditReservationForm"]["from"];
+        const toTime = document.forms["EditReservationForm"]["to"];
 
         if (toTime.value <= fromTime.value) {
             swal("Invalid Time", "From and To times are conflicting", "error");
