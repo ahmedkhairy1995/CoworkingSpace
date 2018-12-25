@@ -28,6 +28,7 @@ $contacts = $contactInfoController->getAllContacts();
 
 <body>
 
+<div id="body">
 
 <?php include("Header.php")?>
 
@@ -108,7 +109,9 @@ $contacts = $contactInfoController->getAllContacts();
     </div>
 
 </div>
-<?php session_destroy(); ?><?php include("Footer.php")?>
+<?php session_destroy(); ?>
+
+<?php include("Footer.php")?>
 
 <!--Applying an external javascript-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
