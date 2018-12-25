@@ -16,13 +16,13 @@ if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
 }
 
-require_once('../ImagesTableController.php.php');
+require_once('../ImagesTableController.php');
 $controller = ImagesTableController::getImagesTableController();
 $ID = isset($_GET['id']) ? $_GET['id'] : "";
 $result = $controller->deleteImage($ID);
 if ($result)
     redirect_to("Images.php?flag=4");
 else
-    redirect_to("Images.php?flag=3&id=".$ID);
+    redirect_to("Images.php?flag=3");
 
 ?>

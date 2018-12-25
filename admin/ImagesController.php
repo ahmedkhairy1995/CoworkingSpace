@@ -19,7 +19,7 @@ if(isset($_POST["submit"])){
     if($check !== false){
         $image = $_FILES['image']['tmp_name'];
         $imgContent = addslashes(file_get_contents($image));
-        $insert = $controller->insertImage($imgContent,"/");
+        $insert = $controller->insertImage($imgContent);
         if($insert){
             redirect_to("Images.php?flag=1");
         }else{

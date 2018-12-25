@@ -76,9 +76,9 @@ class ImagesTableController
             return $row['count'];
         }
     }
-    public function insertImage($image,$path)
+    public function insertImage($image)
     {
-        $query = "INSERT INTO images (Image,name) VALUES('{$image}','{$path}');";
+        $query = "INSERT INTO images (Image) VALUES('{$image}');";
         $result = $this->getDB()->performQuery($query);
         if (isset($result)){
             return true;
@@ -87,7 +87,8 @@ class ImagesTableController
     }
     public function deleteImage($id)
     {
-        $query = "Delete from images where id={$id}";
+        $query = "Delete from images where imageID={$id}";
+//        echo $query;
         $result = $this->getDB()->performQuery($query);
         if ($result)
             return true;

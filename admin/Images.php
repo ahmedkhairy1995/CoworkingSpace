@@ -76,13 +76,13 @@ $count = $controller->getImagesCount();
                     # code...
                     if ($x == 0) {
                         echo "<div class=\"carousel-item active\">
+                        <a class='btn btn-market full-width btn--with-shadow' href='DeleteImageController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;float:right;'> Delete </a >
                         <img src='data:image/*;base64," . base64_encode($image->getImage()) . "'>
-                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteImageController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;'> Delete </a >
                               </div>";
                     } else {
                         echo "<div class=\"carousel-item\">
+                                        <a class='btn btn-market full-width btn--with-shadow' href='DeleteImageController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;float:right;'> Delete </a >
                                         <img src='data:image/*;base64," . base64_encode($image->getImage()) . "'>
-                                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteImageController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;'> Delete </a >
                                     </div>";
                     }
                     $x++;
@@ -108,6 +108,11 @@ $count = $controller->getImagesCount();
 
         if (javaScriptVar === "4") {
             swal("Congrats", "Image Deleted Successfully ", "success");
+        }else if (javaScriptVar === "1") {
+            swal("Congrats", "Image Uploaded Successfully ", "success");
+        }
+        else if (javaScriptVar === "2") {
+            swal("Error", "Can't upload Image try again! ", "error");
         }
         else if (javaScriptVar === "3") {
             swal("Error", "Can't delete Image try again! ", "error");
