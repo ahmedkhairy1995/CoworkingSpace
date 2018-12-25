@@ -132,6 +132,19 @@ class ReservationTableController
 
     }
 
+    public function getRevenue()
+    {
+        $query = "select startTime,endTime FROM reservation";
+        $result = $this->getDB()->performQuery($query);
+        if (isset($result) && isset(self::$controller)) {
+            $object_Array = array();
+            while ($row = $this->db->fetchArray($result)) {
+                return row['endTime'] - row['startTime'];
+            }
+            return $object_Array;
+        }
+    }
+
     public function getDB()
     {
         return $this->db;
