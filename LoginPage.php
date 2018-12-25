@@ -35,7 +35,7 @@ $contacts = $contactInfoController->getAllContacts();
 
     <?php include("Header.php")?>
     <div id="LoginSpan">
-        <span>Sign in to continue to Ebda3</span>
+        <span>Sign in to continue to CoworkingSpace</span>
     </div>
 
     <div id="LoginForm">

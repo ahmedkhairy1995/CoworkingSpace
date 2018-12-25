@@ -22,7 +22,7 @@
                 </ul>
             </div>
             <?php }else{?>
-                <a href="LoginPage.php.php" title="" role="button">Login</a>
+                <a href="LoginPage.php" title="" role="button">Login</a>
             <?php }?>
         </div>
     </nav>

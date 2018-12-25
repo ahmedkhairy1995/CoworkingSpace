@@ -25,16 +25,13 @@ $contacts = $contactInfoController->getAllContacts();
     <!--Applying an external stylesheet-->
     <script src="sweetalert/dist/sweetalert.min.js"></script>
 
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="buttons.css">
-    <link rel="stylesheet" href="component.css">
-    <link rel="stylesheet" type="text/css" href="style1.css">
-    <link rel="stylesheet" type="text/css" href="style2.css">
-    <link rel="stylesheet" href="font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style2.css">
-    <link rel="stylesheet" href="component.css">
-    <link rel="stylesheet" type="text/css" href="style2.css">
     <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
 
 </head>
@@ -151,8 +148,7 @@ $contacts = $contactInfoController->getAllContacts();
 
 <!--Applying an external javascript-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"/>
-<script src="myScript.js"/>
-<script src="SignUpScript.js"/>
+<script src="js/SignUpScript.js"/>
 
 <script>
 
