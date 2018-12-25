@@ -93,7 +93,7 @@ $contacts = $contactInfoController->getAllContacts();
             <input type="password" name="ConfirmNewPassword" minlength="6" value=""><br>
 
             <p><strong>Mobile Phone</strong></p>
-            <input type="tel" name="MobileNumber" placeholder="+20" value="<?php echo $MobileNumber; ?>"><br>
+            <input type="tel" name="MobileNumber" placeholder="+20" value="<?php echo '0'.$MobileNumber; ?>"><br>
 
             <p><strong>Current address</strong></p>
             <input type="text" name="Address" value="<?php echo $Address; ?>" required><br>
