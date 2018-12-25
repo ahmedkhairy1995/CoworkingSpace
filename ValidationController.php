@@ -48,6 +48,6 @@ class ValidationController
     }
     public function validateAddress($address)
     {
-        return preg_match('/^\\d+ [a-zA-Z ]+, [a-zA-Z ]+$/', $address);
+        return preg_match('/^\d+ ,[a-zA-Z .]+, [a-zA-Z ]+$/', $address);
     }
 }
