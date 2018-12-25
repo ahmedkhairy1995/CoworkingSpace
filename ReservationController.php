@@ -45,7 +45,7 @@ if (isset($_SESSION['views'])) {
 
         if ($blocked == 1)
             redirect_to("Reservation.php?flag=1");
-        else if( !is_numeric($Capacity) || !is_numeric($RoomNumber)){
+        else if (!is_numeric($Capacity) || !is_numeric($RoomNumber)) {
             $_SESSION['RoomNumber'] = $RoomNumber;
             $_SESSION['Date'] = $Date;
             $_SESSION['From'] = $From;
@@ -56,8 +56,7 @@ if (isset($_SESSION['views'])) {
             $_SESSION['WhiteBoard'] = $WhiteBoard;
             $_SESSION['Capacity'] = $Capacity;
             redirect_to("Reservation.php?flag=7");
-        }
-        elseif ($Date < date("Y-m-d")) {
+        } elseif ($Date < date("Y-m-d")) {
             $_SESSION['RoomNumber'] = $RoomNumber;
             $_SESSION['Date'] = $Date;
             $_SESSION['From'] = $From;
@@ -68,7 +67,7 @@ if (isset($_SESSION['views'])) {
             $_SESSION['WhiteBoard'] = $WhiteBoard;
             $_SESSION['Capacity'] = $Capacity;
             redirect_to("Reservation.php?flag=2");
-        } elseif ($To < $From) {
+        } elseif ($To <= $From) {
             $_SESSION['RoomNumber'] = $RoomNumber;
             $_SESSION['Date'] = $Date;
             $_SESSION['From'] = $From;

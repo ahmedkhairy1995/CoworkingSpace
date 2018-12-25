@@ -20,6 +20,7 @@ require_once('../RoomTableController.php');
 $reservationController = ReservationTableController::getReservationTableController();
 $roomsController = RoomTableController::getRoomTableController();
 $reservationId = $_GET['id'];
+$flag = -1;
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 $reservation = $reservationController->getReservationById($reservationId);
@@ -48,7 +49,8 @@ if (!isset($reservation))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="EditReservationController.php">
+            <form class="login100-form validate-form" method="post" action="EditReservationController.php"
+                  onsubmit="return validateForm()">
 					<span class="login100-form-title p-b-49">
 						Edit Reservation
 					</span>
@@ -109,7 +111,7 @@ if (!isset($reservation))
 
                 <div class="wrap-input100">
                     <span class="label-input100">Date </span>
-                    <input id="DatePicker" type="date" name="reservationDay"
+                    <input id="DatePicker" type="date" name="reservationDay" max='2019-12-30'
                            value="<?php echo $reservation->getDate() ?>">
                 </div>
                 <br/>
@@ -132,7 +134,8 @@ if (!isset($reservation))
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
-                         <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow" value="EDIT" style="width: 100%;text-align: center;">
+                        <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow"
+                               value="EDIT" style="width: 100%;text-align: center;">
                     </div>
                 </div>
 
@@ -145,24 +148,45 @@ if (!isset($reservation))
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("DatePicker").setAttribute("min", today);
+
+    function validateForm() {
+        const fromTime = document.forms["LoginForm"]["from"];
+        const toTime = document.forms["LoginForm"]["to"];
+
+        if (toTime.value <= fromTime.value) {
+            swal("Invalid Time", "From and To times are conflicting", "error");
+            return false;
+        }
+    }
+
+
     javaScriptVar = "<?php echo $flag; ?>";
 
     if (javaScriptVar === "2") {
         swal("Invalid Date", "Please enter valid date ", "error");
-    }
-    else if (javaScriptVar === "3") {
+    } else if (javaScriptVar === "3") {
         swal("Invalid Time", "Please enter valid time", "error");
-    }
-    else if (javaScriptVar === "4") {
+    } else if (javaScriptVar === "4") {
         swal("Sorry!", "The room is reserved and the capacity is less than what you need  ", "error");
-    }
-    else if (javaScriptVar === "5") {
+    } else if (javaScriptVar === "5") {
         swal("Sorry!", "The room is reserved ", "error");
-    }
-    else if (javaScriptVar === "6") {
+    } else if (javaScriptVar === "6") {
         swal("Sorry!", "The capacity is less than what you need.", "error");
-    }
-    else if (javaScriptVar === "7") {
+    } else if (javaScriptVar === "7") {
         swal("Sorry!", "The capacity or the room is not a number", "error");
     }
 </script>

@@ -60,7 +60,8 @@ $contacts = $contactInfoController->getAllContacts();
     <!--The action attribute defines the action to be performed when the form is submitted.
     Normally, the form data is sent to a web page on the server when the user clicks on the submit button.
     In the example above, the form data is sent to a page on the server called "/action_page.php". This page contains a server-side script that handles the form data-->
-    <form id="BookARoom" name="LoginForm" action="ReservationController.php" method="post">
+    <form id="BookARoom" name="LoginForm" action="ReservationController.php" onsubmit="return validateForm()"
+          method="post">
         <p><strong>Room</strong></p>
         <select name="roomForm">
             <?php
@@ -111,7 +112,7 @@ $contacts = $contactInfoController->getAllContacts();
         } ?>>AC<br><br>
 
         <!--<input type="submit"> defines a button for submitting form data to a form-handler.
-The form-handler is typically a server page with a script for processing input data.-->
+    The form-handler is typically a server page with a script for processing input data.-->
         <input type="submit" name="checkAvailability" value="Check Availability">
         <br><br>
 
@@ -135,14 +136,24 @@ The form-handler is typically a server page with a script for processing input d
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("DatePicker").setAttribute("min", today);
 
-    javaScriptVar = "<?php if (isset($flag)) echo $flag; ?>";
+    function validateForm() {
+        const fromTime = document.forms["LoginForm"]["from"];
+        const toTime = document.forms["LoginForm"]["to"];
+
+        if (toTime.value <= fromTime.value) {
+            swal("Invalid Time", "From and To times are conflicting", "error");
+            return false;
+        }
+    }
+
+    javaScriptVar = "<?php echo $flag; ?>";
 
     if (javaScriptVar === "1") {
         swal("Blocked User", "Please contact the admin ", "error");
     } else if (javaScriptVar === "2") {
         swal("Invalid Date", "Please enter valid date ", "error");
     } else if (javaScriptVar === "3") {
-        swal("Invalid Time", "Please enter valid time", "error");
+        swal("Invalid Time", "From and To times are conflicting\"", "error");
     } else if (javaScriptVar === "4") {
         swal("Sorry!", "The room is reserved and the capacity is less than what you need  ", "error");
     } else if (javaScriptVar === "5") {
