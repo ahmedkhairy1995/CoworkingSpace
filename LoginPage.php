@@ -1,4 +1,9 @@
 <?php
+function redirect_to($newlocation)
+{
+    header("Location:" . $newlocation);
+    exit;
+}
 session_start();
 $flag = -1;
 if (isset($_GET['flag']))
@@ -8,6 +13,9 @@ require_once('ContactInfoTableController.php');
 
 $contactInfoController = ContactInfoTableController::getContactInfoTableController();
 $contacts = $contactInfoController->getAllContacts();
+if (isset($_SESSION['views'])) {
+    redirect_to("Homepage.php");
+}
 ?>
 
 <!Doctype html>
