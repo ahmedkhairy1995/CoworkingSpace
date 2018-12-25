@@ -9,8 +9,7 @@
 class ImagesModel
 {
     private $imageID;
-    private $name;
-    private $deleted;
+    private $Image;
 
     /**
      * @return mixed
@@ -31,33 +30,17 @@ class ImagesModel
     /**
      * @return mixed
      */
-    public function getName()
+    public function getImage()
     {
-        return $this->name;
+        return $this->Image;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $Image
      */
-    public function setName($name)
+    public function setImage($Image)
     {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
-    }
-
-    /**
-     * @param mixed $deleted
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
+        $this->Image = $Image;
     }
 
     public static function instantiate($row)
@@ -78,5 +61,4 @@ class ImagesModel
         //check if the key exists
         return array_key_exists($column, $object_vars);
     }
-
 }

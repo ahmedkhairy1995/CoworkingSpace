@@ -72,9 +72,9 @@ if (isset($_SESSION['admin'])) {
     javaScriptVar = "<?php echo $flag; ?>";
     if (javaScriptVar == 1) {
         swal("Wrong Username or Password", "Please re-enter them", "error");
-    } else if (javaScriptVar == 2) {
-        swal("Wrong Username format", "Please re-enter username", "error");
     } else if (javaScriptVar == 3) {
+        swal("Wrong Username format", "Please re-enter username", "error");
+    } else if (javaScriptVar == 2) {
         swal("Wrong Password format ", "Your Password Must Contain At Least 8 Characters! Contain At Least 1 Number, 1 Capital Letter,and 1 Lowercase Letter!", "error");
     }
 </script>

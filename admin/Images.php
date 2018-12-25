@@ -12,7 +12,7 @@ if (!isset($_SESSION['admin'])) {
 
 require_once('../ImagesTableController.php');
 $controller = ImagesTableController::getImagesTableController();
-$images = $controller->getImages();
+$images = $controller->getAllImages();
 $count = $controller->getImagesCount();
 ?>
 
@@ -30,9 +30,9 @@ $count = $controller->getImagesCount();
     <link rel="stylesheet" type="text/css" href="css/blocks.css">
 
     <!-- <script src="../sweetalert/dist/sweetalert.min.js"></script> -->
-<script src="js/jquery-3.3.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -40,57 +40,62 @@ $count = $controller->getImagesCount();
     <!-- Header Replace it with a header -->
     <?php include("header-user-dropdown.php"); ?>
     <br/>
-	<div class="container">
-  
-  <div class="page-header">
-        <h2 style="text-align: center">Images</h2>
-  </div>
-     <form action="ImagesController.php" method="POST" enctype="multipart/form-data">
-        <input class="fileUpload" type="file" name="image" accept="image/*" required = "required" style="width: 25%; margin-right: 1%; margin-left: 1%;">
-        <input type="submit" name="submit" class="btn btn-market btn--with-shadow" value="UPLOAD">
-        </button>
-    </form>
+    <div class="container">
 
-<br/>
+        <div class="page-header">
+            <h2 style="text-align: center">Images</h2>
+        </div>
+        <form action="ImagesController.php" method="POST" enctype="multipart/form-data">
+            <input class="fileUpload" type="file" name="image" accept="image/*" required="required"
+                   style="width: 25%; margin-right: 1%; margin-left: 1%;">
+            <input type="submit" name="submit" class="btn btn-market btn--with-shadow" value="UPLOAD">
+            </button>
+        </form>
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <?php for($x=1; $x<$count; $x++){
-                                        echo "<li data-target='#carousel-example-generic' data-slide-to='".$x."'></li>";
-                                    }?>
-                                </ol>
+        <br/>
 
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox">
-                                    <?php $x=0; foreach ($images as $image) {
-                                        # code...
-                                        if($x == 0){echo "<div class=\"carousel-item active\">
-                                        <img src='data:image/*;base64,".base64_encode($image)."'>
-                                    </div>";}
-                                        else{
-                                            echo "<div class=\"carousel-item\">
-                                        <img src='data:image/*;base64,".base64_encode($image)."'>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <?php for ($x = 1; $x < $count; $x++) {
+                    echo "<li data-target='#carousel-example-generic' data-slide-to='" . $x . "'></li>";
+                } ?>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <?php $x = 0;
+                foreach ($images as $image) {
+                    # code...
+                    if ($x == 0) {
+                        echo "<div class=\"carousel-item active\">
+                        <img src='data:image/*;base64," . base64_encode($image->getImage()) . "'>
+                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteContactController.php?id=".$image->getImageId()."'style ='line-height: 0;color:white;'> Delete </a >
+                              </div>";
+                    } else {
+                        echo "<div class=\"carousel-item\">
+                                        <img src='data:image/*;base64," . base64_encode($image->getImage()) . "'>
+                                        <a class='btn btn - market full - width btn--with - shadow' href='DeleteContactController.php?id=" . $image->getImageId() . "'style ='line-height: 0;color:white;'> Delete </a >
                                     </div>";
-                                        }
-                                        $x++;
-                                        
-                                    }?>
+                    }
+                    $x++;
 
-                                </div>
+                } ?>
 
-                                <!-- Controls -->
-                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
+            </div>
 
-</div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
 </body>
 </html>

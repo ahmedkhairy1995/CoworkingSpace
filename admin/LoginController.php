@@ -10,6 +10,8 @@ session_start();
 include('AdminTableController.php');
 $adminController = AdminTableController::getAdminTableController();
 
+require_once('../ValidationController.php');
+$validationController = ValidationController::getValidationController();
 $username = isset($_POST['username']) ? $_POST['username']: "" ;
 $password = isset($_POST['password']) ? $_POST['password']: "";
 if (!$validationController->validateName($username)) {

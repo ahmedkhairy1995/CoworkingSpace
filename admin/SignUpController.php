@@ -9,4 +9,4 @@ require_once('AdminTableController.php');
 $adminController = AdminTableController::getAdminTableController();
 
 
-$result = $adminController->signup("admin","31032016","May","Abdeldayem");
+$result = $adminController->signup("admin","31032016May","May","Abdeldayem");

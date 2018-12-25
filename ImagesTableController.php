@@ -85,6 +85,15 @@ class ImagesTableController
         }
         return false;
     }
+    public function deleteImage($id)
+    {
+        $query = "Delete from images where id={$id}";
+        $result = $this->getDB()->performQuery($query);
+        if ($result)
+            return true;
+        return false;
+    }
+
     public function getDB()
     {
         return $this->db;
