@@ -107,6 +107,16 @@ class RoomTableController
         return false;
     }
 
+    public function getCount()
+    {
+        $query = "select count(*) as count FROM rooms";
+        $result = $this->getDB()->performQuery($query);
+        if (isset($result)){
+            $row = $this->db->fetchArray($result);
+            return $row['count'];
+        }
+
+    }
 
     public function getDB()
     {

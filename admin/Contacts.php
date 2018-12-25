@@ -50,7 +50,7 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
 
 <div style="position: relative;">
     <!-- Header Replace it with a header -->
-    <?php include("header-user-dropdown.php") ?>
+    <?php include("AdminHeader.php") ?>
     <br/>
     <h2 style="text-align: center">Contacts</h2>
 

@@ -28,6 +28,7 @@ $contacts = $contactInfoController->getAllContacts();
 
 <body>
 
+<div id="body">
 
 <?php include("Header.php") ?>
 
@@ -108,9 +109,9 @@ $contacts = $contactInfoController->getAllContacts();
         <input type="submit" name="submit" value="Submit" class="btn btn-success pull-left">
     </form>
 </div>
+<?php session_destroy(); ?>
 
-</div>
-<?php session_destroy(); ?><?php include("Footer.php") ?>
+<?php include("Footer.php")?>
 
 <!--Applying an external javascript-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

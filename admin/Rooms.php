@@ -50,7 +50,7 @@ $roomController = RoomTableController::getRoomTableController();
 
 <div style="position: relative;">
     <!-- Header Replace it with a header -->
-    <?php include("header-user-dropdown.php") ?>
+    <?php include("AdminHeader.php") ?>
     <br/>
     <h2 style="text-align: center">Rooms</h2>
 
