@@ -17,8 +17,10 @@
         <div>
             <i class="fa fa-phone"></i>
             <p>+20 <?php echo $contacts[0]->getContactNum(); ?> </p><br>
+            <?php if(isset($contacts[1])){ ?>
             <i class="fa fa-phone"></i>
             <p>+20 <?php echo $contacts[1]->getContactNum(); ?></p>
+            <?php }?>
         </div>
     </div>
 
