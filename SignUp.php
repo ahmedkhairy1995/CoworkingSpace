@@ -133,7 +133,7 @@ $contacts = $contactInfoController->getAllContacts();
         swal("Error", "You are already signed up", "error");
     }
     else if (javaScriptVar === "5") {
-        swal("Error", "<?php echo $_SESSION['DB-Error']?>", "error");
+        swal("Error", "<?php  if(isset($_SESSION['DB-Error'])) echo $_SESSION['DB-Error'];?>", "error");
     }
     else if (javaScriptVar === "8")
         swal("Wrong Email format ", "Please reenter your email", "error");
