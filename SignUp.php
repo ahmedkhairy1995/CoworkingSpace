@@ -29,86 +29,88 @@ $contacts = $contactInfoController->getAllContacts();
 <body>
 
 
-<?php include("Header.php")?>
+<?php include("Header.php") ?>
 
-    <div id="SignUpSpan">
-        <span>Create your Ebda3 Account</span>
-    </div>
+<div id="SignUpSpan">
+    <span>Create your Ebda3 Account</span>
+</div>
 
-    <aside class="signUpAside">
-        <h3>One account is all you need &nbsp;<i class="fa fa-thumbs-up"></i></h3>
-    </aside>
+<aside class="signUpAside">
+    <h3>One account is all you need &nbsp;<i class="fa fa-thumbs-up"></i></h3>
+</aside>
 
-    <div id="SignUpForm">
-        <!--Creating A Form-->
-        <!--The action attribute defines the action to be performed when the form is submitted.
-        Normally, the form data is sent to a web page on the server when the user clicks on the submit button.
-        In the example above, the form data is sent to a page on the server called "/action_page.php". This page contains a server-side script that handles the form data-->
-        <form id="_SignUpForm" name="SignUpForm" action="SignupController.php" method="post">
+<div id="SignUpForm">
+    <!--Creating A Form-->
+    <!--The action attribute defines the action to be performed when the form is submitted.
+    Normally, the form data is sent to a web page on the server when the user clicks on the submit button.
+    In the example above, the form data is sent to a page on the server called "/action_page.php". This page contains a server-side script that handles the form data-->
+    <form id="_SignUpForm" name="SignUpForm" action="SignupController.php" onsubmit="return validateForm()"
+          method="post">
 
-            <p><strong>Name</strong></p>
-            <!--type attribute can have values such as text,radio,submit,checkbox-->
-            <input type="text" name="FirstName" placeholder="First" id="firstName"
-                   value="<?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']; ?>" required>
-            <input type="text" name="LastName" placeholder="Last" id="lastName"
-                   value="<?php if (isset($_SESSION['LastName'])) echo $_SESSION['LastName']; ?>" required><br>
+        <p><strong>Name</strong></p>
+        <!--type attribute can have values such as text,radio,submit,checkbox-->
+        <input type="text" name="FirstName" placeholder="First" id="firstName"
+               value="<?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']; ?>" required>
 
-            <p><strong>Email</strong>
-            <p>
-                <input type="email" name="Email"
-                       value="<?php if (isset($_SESSION['Email'])) echo $_SESSION['Email']; ?>" required>
-            <p><strong>Confirm email</strong></p>
-            <input type="email" name="EmailConfirmation" required>
+        <input type="text" name="LastName" placeholder="Last" id="lastName"
+               value="<?php if (isset($_SESSION['LastName'])) echo $_SESSION['LastName']; ?>" required><br>
 
-            <p><strong>Create a password</strong></p>
-            <input type="password" name="Password" minlength="6" value="" required>
-            <p><strong>Confirm your password</strong></p>
-            <input type="password" name="PasswordConfirmation" minlength="6" value="" required><br>
+        <p><strong>Email</strong>
+        <p>
+            <input type="email" name="Email"
+                   value="<?php if (isset($_SESSION['Email'])) echo $_SESSION['Email']; ?>" required>
+        <p><strong>Confirm email</strong></p>
+        <input type="email" name="EmailConfirmation" required>
 
-            <p><strong>Birthday</strong><i style="color:dimgrey;">&nbsp &nbsp (yyyy-mm-dd)</i></p>
-            <input type="date" name="bday" min="1970-01-02"
-                   value="<?php if (isset($_SESSION['bday'])) echo $_SESSION['bday']; ?>"><br><br>
+        <p><strong>Create a password</strong></p>
+        <input type="password" name="Password" minlength="6" value="" required>
+        <p><strong>Confirm your password</strong></p>
+        <input type="password" name="PasswordConfirmation" minlength="6" value="" required><br>
 
-            <div class="form-group">
+        <p><strong>Birthday</strong><i style="color:dimgrey;">&nbsp &nbsp (yyyy-mm-dd)</i></p>
+        <input type="date" name="bday" min="1970-01-02"
+               value="<?php if (isset($_SESSION['bday'])) echo $_SESSION['bday']; ?>"><br><br>
 
-                <!--<p><strong>Gender</strong></p>-->
-                <label class="radio-inline">
-                    <input type="radio" class="Radio" name="gender" value="M" <?php if (isset($_SESSION['gender'])) {
-                        if ($_SESSION['gender'] == 'M') echo "checked";
-                    } ?> required><!--We can add checked attribute if we want it to be checked as a default-->
-                    Male
-                </label>
+        <div class="form-group">
 
-                <label class="radio-inline">
-                    <input type="radio" class="Radio" name="gender" value="F" <?php if (isset($_SESSION['gender'])) {
-                        if ($_SESSION['gender'] == 'F') echo "checked";
-                    } ?> required>
-                    Female
-                </label>
-            </div>
+            <!--<p><strong>Gender</strong></p>-->
+            <label class="radio-inline">
+                <input type="radio" class="Radio" name="gender" value="M" <?php if (isset($_SESSION['gender'])) {
+                    if ($_SESSION['gender'] == 'M') echo "checked";
+                } ?> required><!--We can add checked attribute if we want it to be checked as a default-->
+                Male
+            </label>
 
-            <p><strong>Mobile Phone</strong></p>
-            <input type="tel" name="MobileNumber" placeholder="+20"
-                   value="<?php if (isset($_SESSION['MobileNumber'])) echo $_SESSION['MobileNumber']; ?>" required><br>
+            <label class="radio-inline">
+                <input type="radio" class="Radio" name="gender" value="F" <?php if (isset($_SESSION['gender'])) {
+                    if ($_SESSION['gender'] == 'F') echo "checked";
+                } ?> required>
+                Female
+            </label>
+        </div>
 
-            <p><strong>Current address</strong></p>
-            <input type="text" name="Address"
-                   value="<?php if (isset($_SESSION['Address'])) echo $_SESSION['Address']; ?>" required><br>
+        <p><strong>Mobile Phone</strong></p>
+        <input type="tel" name="MobileNumber" placeholder="+20"
+               value="<?php if (isset($_SESSION['MobileNumber'])) echo $_SESSION['MobileNumber']; ?>" required><br>
 
-            <p><strong>ID number</strong></p>
-            <input type="text" ID="IDNumber" name="IDNumber2"
-                   value="<?php if (isset($_SESSION['IDNumber2'])) echo $_SESSION['IDNumber2']; ?>" minlength="14"
-                   maxlength="14" required>
+        <p><strong>Current address</strong></p>
+        <input type="text" name="Address"
+               value="<?php if (isset($_SESSION['Address'])) echo $_SESSION['Address']; ?>" required><br>
 
-            <br><br>
-            <!--<input type="submit"> defines a button for submitting form data to a form-handler.
-            The form-handler is typically a server page with a script for processing input data.-->
-            <input type="submit" name="submit" value="Submit" class="btn btn-success pull-left">
-        </form>
-    </div>
+        <p><strong>ID number</strong></p>
+        <input type="text" ID="IDNumber" name="IDNumber2"
+               value="<?php if (isset($_SESSION['IDNumber2'])) echo $_SESSION['IDNumber2']; ?>" minlength="14"
+               maxlength="14" required>
+
+        <br><br>
+        <!--<input type="submit"> defines a button for submitting form data to a form-handler.
+        The form-handler is typically a server page with a script for processing input data.-->
+        <input type="submit" name="submit" value="Submit" class="btn btn-success pull-left">
+    </form>
+</div>
 
 </div>
-<?php session_destroy(); ?><?php include("Footer.php")?>
+<?php session_destroy(); ?><?php include("Footer.php") ?>
 
 <!--Applying an external javascript-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -119,20 +121,15 @@ $contacts = $contactInfoController->getAllContacts();
     javaScriptVar = "<?php echo $flag; ?>";
     if (javaScriptVar === "1") {
         swal("Error", "This is a wrong ID!", "error");
-    }
-    else if (javaScriptVar === "2") {
+    } else if (javaScriptVar === "2") {
         swal("Error", "Confirm your email", "error");
-    }
-    else if (javaScriptVar === "3") {
+    } else if (javaScriptVar === "3") {
         swal("Error", "Check your password", "error");
-    }
-    else if (javaScriptVar === "4") {
+    } else if (javaScriptVar === "4") {
         swal("Error", "You are already signed up", "error");
-    }
-    else if (javaScriptVar === "5") {
+    } else if (javaScriptVar === "5") {
         swal("Error", "<?php echo $_SESSION['DB-Error']?>", "error");
-    }
-    else if (javaScriptVar === "8")
+    } else if (javaScriptVar === "8")
         swal("Wrong Email format ", "Please reenter your email", "error");
     else if (javaScriptVar === "9")
         swal("Wrong Mobile format ", "Please reenter your mobile number", "error");
@@ -142,6 +139,15 @@ $contacts = $contactInfoController->getAllContacts();
         swal("Wrong Password format ", "Your Password Must Contain At Least 8 Characters! Contain At Least 1 Number, 1 Capital Letter,and 1 Lowercase Letter!", "error");
     else if (javaScriptVar === "7")
         swal("Wrong Address format ", "Please reenter your address", "error");
+
+
+    function validateForm() {
+        const firstNameElement = document.forms["SignUpForm"]["FirstName"];
+        if (firstNameElement.value.length === "2") {
+            firstNameElement.target().setCustomValidity("ahmeddd");
+            return false;
+        }
+    }
 
 </script>
 </body>
