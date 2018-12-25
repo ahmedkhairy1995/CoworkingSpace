@@ -61,22 +61,13 @@ $contacts = $contactInfoController->getAllContacts();
     In the example above, the form data is sent to a page on the server called "/action_page.php". This page contains a server-side script that handles the form data-->
     <form id="BookARoom" name="LoginForm" action="ReservationController.php" method="post">
         <p><strong>Room</strong></p>
-        <select name="roomForm" Room Num='NEW'>
-            <option value=""><?php if (isset($_SESSION['RoomNumber'])) echo $_SESSION['RoomNumber']; else echo "--Select--"; ?></option>
-
+        <select name="roomForm">
             <?php
             $list = $roomsController->getAllFreeRooms();
             $i = 0;
-            $select = "db_ebda3";
-            if (isset ($select) && $select != "") {
-                $select = $_POST ['NEW'];
-            }
             while ($i < count($list)) {
                 ?>
-                <option
-                        value="<?php echo $list[$i]->getRoomID(); ?>"<?php if ($list[$i]->getRoomID() === $select) {
-                    echo "selected";
-                } ?>>
+                <option value="<?php echo $list[$i]->getRoomID(); ?>">
                     <?php echo $list[$i]->getRoomID(); ?>
                 </option>
                 <?php $i++;
