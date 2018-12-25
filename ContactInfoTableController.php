@@ -41,7 +41,7 @@ class ContactInfoTableController
 
     public function getContactById($Id)
     {
-        $result = $this->db->performQuery("SELECT * FROM contact_info WHERE id = '{$Id}'");
+        $result = $this->db->performQuery("SELECT * FROM contact_info WHERE id = {$Id}");
         $object_Array = array();
         if (isset($result) && isset(self::$controller)) {
             while ($row = $this->db->fetchArray($result)) {
@@ -56,7 +56,7 @@ class ContactInfoTableController
 
     public function insertContact($contact)
     {
-        $query = "INSERT INTO contact_info (contactNum) VALUES({$contact});";
+        $query = "INSERT INTO contact_info (contactNum) VALUES('{$contact}');";
         $result = $this->getDB()->performQuery($query);
         if (isset($result)){
             return true;
@@ -65,7 +65,15 @@ class ContactInfoTableController
     }
     public function updateContact($id, $contactNum)
     {
-        $query = "UPDATE contact_info SET contactNum='{$contactNum}' WHERE  id='{$id}'";
+        $query = "UPDATE contact_info SET contactNum='{$contactNum}' WHERE  id={$id}";
+        $result = $this->getDB()->performQuery($query);
+        if ($result)
+            return true;
+        return false;
+    }
+    public function deleteContact($id)
+    {
+        $query = "Delete from contact_info where id={$id}";
         $result = $this->getDB()->performQuery($query);
         if ($result)
             return true;

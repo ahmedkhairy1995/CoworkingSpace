@@ -26,7 +26,9 @@ if (!isset($_SESSION['admin'])) {
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header-user-dropdown.css">
+
     <script src="../sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../sweetalert/dist/sweetalert.css">
 
 </head>
 

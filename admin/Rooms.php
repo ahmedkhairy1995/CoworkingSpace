@@ -62,6 +62,7 @@ $roomController = RoomTableController::getRoomTableController();
                 <th>Capacity</th>
                 <th>Status</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -72,6 +73,7 @@ $roomController = RoomTableController::getRoomTableController();
                 echo "<td>" . $room->getCapacity() . "</td>";
                 echo "<td>" . $room->getStatus() . "</td>";
                 echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\"  href=\"EditRoom.php?id=" . $room->getRoomID() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
+                echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\"  href=\"DeleteRoomController.php?id=" . $room->getRoomID() . "\" style=\"line-height: 0;color:white;\"> Delete </a></td>";
                 echo "</tr>";
             } ?>
 
@@ -79,5 +81,21 @@ $roomController = RoomTableController::getRoomTableController();
         </table>
     </div>
 </div>
+<script>
+    javaScriptVar = "<?php echo $flag; ?>";
+    if (javaScriptVar === "1") {
+        swal("Congrats", "Room Edited Successfully ", "success");
+    }
+    else if (javaScriptVar === "2") {
+        swal("Congrats", "Room Added Successfully ", "success");
+    }
+    else if (javaScriptVar === "4") {
+        swal("Congrats", "Room Deleted Successfully ", "success");
+    }
+    else if (javaScriptVar === "3") {
+        swal("Error", "Can't delete contact try again! ", "error");
+    }
+
+</script>
 </body>
 </html>

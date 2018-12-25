@@ -35,8 +35,11 @@ $reservationController = ReservationTableController::getReservationTableControll
 
 	<script src="js/datatables.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/blocks.css">
-	<link rel="stylesheet" href="css	/header-user-dropdown.css">
+	<link rel="stylesheet" href="css/header-user-dropdown.css">
 
+
+    <script src="../sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../sweetalert/dist/sweetalert.css">
 
 
 </head>
@@ -91,5 +94,12 @@ $reservationController = ReservationTableController::getReservationTableControll
         </table>
     </div>
 </div>
+<script>
+    javaScriptVar = "<?php echo $flag; ?>";
+    if (javaScriptVar === "1") {
+        swal("Congrats", "Reservation Edited Successfully ", "success");
+    }
+
+</script>
 </body>
 </html>

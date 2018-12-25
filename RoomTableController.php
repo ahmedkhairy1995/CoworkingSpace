@@ -98,6 +98,14 @@ class RoomTableController
             return true;
         return false;
     }
+    public function deleteRoom($id)
+    {
+        $query = "Delete from rooms where roomID={$id}";
+        $result = $this->getDB()->performQuery($query);
+        if ($result)
+            return true;
+        return false;
+    }
 
 
     public function getDB()

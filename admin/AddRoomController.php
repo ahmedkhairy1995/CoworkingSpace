@@ -22,7 +22,7 @@ if (!is_numeric($Capacity) || !is_numeric($status)) {
     redirect_to("AddRoom.php?flag=1&id=" . $ID);
 }
 if ($result)
-    redirect_to("Rooms.php?flag=1");
+    redirect_to("Rooms.php?flag=2");
 else
     redirect_to("AddRoom.php?flag=2");
 ?>

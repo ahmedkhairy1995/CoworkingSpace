@@ -37,6 +37,8 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
     <link rel="stylesheet" type="text/css" href="css/blocks.css">
     <link rel="stylesheet" href="css/header-user-dropdown.css">
 
+    <script src="../sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../sweetalert/dist/sweetalert.css">
 
 </head>
 
@@ -58,7 +60,7 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
             <tr>
                 <th>ID</th>
                 <th>Contact Number</th>
-                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -67,7 +69,7 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
             foreach ($contacts as $contact) {
                 echo "<tr><td>" . $contact->getId() . "</td>";
                 echo "<td>" . $contact->getContactNum() . "</td>";
-                echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\" href=\"EditContact.php?id=" . $contact->getId() . "\" style=\"line-height: 0;color:white;\"> Edit </a></td>";
+                echo " <td style=\"width: 5%;\"><a class=\"btn btn-market full-width btn--with-shadow\" href=\"DeleteContactController.php?id=" . $contact->getId() . "\" style=\"line-height: 0;color:white;\"> Delete </a></td>";
                 echo "</tr>";
             } ?>
 
@@ -76,5 +78,18 @@ $contactController = ContactInfoTableController::getContactInfoTableController()
         </table>
     </div>
 </div>
+<script>
+    javaScriptVar = "<?php echo $flag; ?>";
+    if (javaScriptVar === "1") {
+        swal("Congrats", "Contact Edited Successfully ", "success");
+    }
+    else if (javaScriptVar === "2") {
+        swal("Congrats", "Contact Deleted Successfully ", "success");
+    }
+    else if (javaScriptVar === "3") {
+        swal("Error", "Can't delete contact try again! ", "error");
+    }
+
+</script>
 </body>
 </html>
