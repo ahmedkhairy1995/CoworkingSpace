@@ -4,9 +4,7 @@ if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 require_once('ContactInfoTableController.php');
 require_once('ImagesTableController.php');
-?>
 
-<?php
 $contactInfoController = ContactInfoTableController::getContactInfoTableController();
 $imagesTableController = ImagesTableController::getImagesTableController();
 $contacts = $contactInfoController->getAllContacts();
