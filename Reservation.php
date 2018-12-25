@@ -77,7 +77,7 @@ $contacts = $contactInfoController->getAllContacts();
         </select><br><br>
 
         <p><strong>Date</strong><i style="color:dimgrey;">&nbsp &nbsp (yyyy-mm-dd)</i></p>
-        <input id="DatePicker" type="date" name="reservationDay" max='2019-12-01'
+        <input id="DatePicker" type="date" name="reservationDay" max='2019-12-30'
                value="<?php if (isset($_SESSION['Date'])) echo $_SESSION['Date']; ?>"><br><br>
 
         <p><strong>Capacity</strong></p>
@@ -133,7 +133,7 @@ The form-handler is typically a server page with a script for processing input d
     }
 
     today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("reservationDay").setAttribute("min", today);
+    document.getElementById("DatePicker").setAttribute("min", today);
 
     javaScriptVar = "<?php if (isset($flag)) echo $flag; ?>";
 
