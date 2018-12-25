@@ -136,13 +136,13 @@ class ReservationTableController
     {
         $query = "select startTime,endTime FROM reservation";
         $result = $this->getDB()->performQuery($query);
+        $hours = 0;
         if (isset($result) && isset(self::$controller)) {
-            $object_Array = array();
             while ($row = $this->db->fetchArray($result)) {
-                return row['endTime'] - row['startTime'];
+                $hours += $row['endTime'] - $row['startTime'];
             }
-            return $object_Array;
         }
+        return $hours * 5;
     }
 
     public function getDB()

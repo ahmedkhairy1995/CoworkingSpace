@@ -4,7 +4,7 @@ function redirect_to($newlocation)
     header("Location:" . $newlocation);
     exit;
 }
-
+$flag = -1;
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 session_start();
