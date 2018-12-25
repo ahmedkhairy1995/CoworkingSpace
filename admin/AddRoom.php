@@ -55,7 +55,7 @@ if (isset($_GET['flag']))
                 </div>
                 <br/>
 
-                <div class=" wrap-input100 validate-input" data-validate="Room Number is required">
+                <div class="wrap-input100 validate-input" data-validate="Room Number is required">
                     <span class="label-input100">Status</span>
                     <select name="status">
                         <option value="1" selected>

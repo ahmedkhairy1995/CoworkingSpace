@@ -27,7 +27,6 @@ while ($i < count($images)) {
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <meta name="description" content="Ebda3 Co-Working space.One of the leading coworking spaces in Egypt"/>
     <title>About Us</title>
     <!-- Minified CSS -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -116,7 +115,7 @@ while ($i < count($images)) {
 <script>
     swal({
         title: "Good Evening!",
-        text: "Ebda3's website, where you can get 10 LE discount 10 times",
+        text: "CoworkingSpace website, where you can get 10 LE discount 10 times",
         imageUrl: "logo.jpg",
         timer: 10000
     });
