@@ -44,7 +44,7 @@ $count = $controller->getImagesCount();
 <body>
 <div style="position: relative;">
     <!-- Header Replace it with a header -->
-    <?php include("adminheader.php"); ?>
+    <?php include("AdminHeader.php"); ?>
     <br/>
     <div class="container">
 

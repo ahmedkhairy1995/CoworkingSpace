@@ -51,7 +51,7 @@ $userController = UsersTableController::getUsersTableController();
 
 <div style="position: relative;">
     <!-- Header Replace it with a header -->
-	<?php include("adminheader.php") ?>
+	<?php include("AdminHeader.php") ?>
 	<br/>
     <h2 style="text-align: center">Customers</h2>
 
