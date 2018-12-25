@@ -147,10 +147,8 @@ The form-handler is typically a server page with a script for processing input d
 
 </div>
 <?php include("Footer.php")?>
-
-<!--Applying an external javascript-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><!--applying jQuery library-->
-
+<script src = "js/jquery-3.2.0.js"></script>
+<script src = "js/bootstrap.min.js"></script>
 <script>
 
     javaScriptVar = "<?php echo $flag; ?>";
