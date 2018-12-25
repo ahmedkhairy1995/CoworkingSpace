@@ -60,13 +60,13 @@ if ($reservation != null) {
     <title>Book a room</title>
 
     <!--Applying an external stylesheet-->
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <script src="sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
-    <link rel="stylesheet" href="component.css">
-    <link rel="stylesheet" type="text/css" href="style1.css">
-    <link rel="stylesheet" type="text/css" href="style2.css">
-    <link rel="stylesheet" href="font-awesome.min.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -74,44 +74,8 @@ if ($reservation != null) {
 
 
 <div id="body">
-    <!--logo of the co-working space-->
-    <img id="Logo" src="logo.jpg" alt="Logo">
 
-    <!--Main Menu Navigation Tabs-->
-    <nav id="MainMenuNavigation" class="nav nav-tabs-justified">
-        <div class="cl-effect-14">
-            <a href="Homepage.php" title="Homepage" class="Home btn" role="button">Homepage</a>
-            <a href="Reservation.php" title="" class="btn" role="button">Book A Room</a>
-            <a href="ViewReservation.php" title="" class="btn" role="button">My Reservations</a>
-            <a href="AboutUs.php" title="" class="btn " role="button">About Us</a>
-        </div>
-        <?php
-        if (!isset($_SESSION['views'])) {
-            ?>
-            <div class="cl-effect-14">
-                <a href="LoginPage.php" title="" class="btn" role="button">Login</a>
-            </div>
-            <?php
-        } else {
-            ?>
-
-            <div class="dropdown">
-                <a href="" title="" class="btn" role="button" data-toggle="dropdown" id="menu" aria-haspopup="true"
-                   aria-expanded="true"><?php echo $_SESSION['name'] ?>
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu" aria-labelledby="menu">
-                    <li><a href="EditProfile.php" title="">Edit Profile</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="LogOut.php" title="" id="logout">Logout</a></li>
-                </ul>
-            </div>
-
-            <?php
-        }
-        ?>
-
-
-    </nav>
+    <?php include("Header.php")?>
 
     <div id="BookARoomSpan">
         <span>Edit Reservation</span>
@@ -181,44 +145,7 @@ The form-handler is typically a server page with a script for processing input d
     </div>
 
 </div>
-
-<footer class="footer-distributed">
-
-    <div class="footer-left">
-        <h3><span>Ebda3</span></h3>
-        <p class="footer-company-name">Ebdaa &copy; 2017</p>
-        <br><br>
-        <p class="footer-company-rights">All rights reserved &trade;</p>
-    </div>
-
-
-    <div class="footer-center">
-        <div>
-            <i class="fa fa-map-marker"></i>
-            <p><span>28 Gaber Ibn Haian Street</span> Ad Dokki, Al Jizah, Egypt</p>
-        </div>
-        <div>
-            <i class="fa fa-phone"></i>
-            <p>+20 <?php echo $contacts[0]->getContactNum(); ?> </p><br>
-            <i class="fa fa-phone"></i>
-            <p>+20 <?php echo $contacts[1]->getContactNum(); ?></p>
-        </div>
-    </div>
-
-
-    <div class="footer-right">
-        <p class="footer-company-about">
-            <span>About us</span>
-            We're an organization that works on developing the ability and skills needed to perform the optimum way,
-            releasing one's maximum creativity.
-        </p>
-
-        <div class="footer-icons">
-            <a href="https://www.facebook.com/Ebda3.Spaces/" target="_blank"><i class="fa fa-facebook"></i></a>
-        </div>
-    </div>
-</footer>
-
+<?php include("Footer.php")?>
 
 <!--Applying an external javascript-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script><!--applying jQuery library-->
