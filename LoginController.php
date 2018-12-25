@@ -19,7 +19,7 @@ $validationController = ValidationController::getValidationController();
 
 $Email = isset($_POST["Email"]) ? $_POST["Email"] : "";
 $Password = isset($_POST["Password"]) ? $_POST["Password"] : "";
-if (!$validationController->validateEmail($Email) || !$validationController->validateEmail($EmailConfirmation)) {
+if (!$validationController->validateEmail($Email)) {
     redirect_to("LoginPage.php?flag=1");
 
 }

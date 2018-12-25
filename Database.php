@@ -13,7 +13,7 @@ class Database
     private $dbHost = "localhost";
     private $dbUser = "root";
     private $dbPassword = "";
-    private $dbName = "db_ebda3";
+    private $dbName = "coworkingspace";
     private $last_query;
     private $error_code;
     private $error_message;

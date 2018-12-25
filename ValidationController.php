@@ -18,10 +18,8 @@ class ValidationController
     }
 
     public function validateEmail($email){
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return true;
-        }
-        return false;
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+
     }
 
     public function validatePassword($password){
