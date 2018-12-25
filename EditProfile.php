@@ -93,7 +93,8 @@ $contacts = $contactInfoController->getAllContacts();
         <!--The action attribute defines the action to be performed when the form is submitted.
         Normally, the form data is sent to a web page on the server when the user clicks on the submit button.
         In the example above, the form data is sent to a page on the server called "/action_page.php". This page contains a server-side script that handles the form data-->
-        <form id="_EditProfileForm" name="EditProfileForm" action="EditProfController.php" method="post">
+        <form id="_EditProfileForm" name="EditProfileForm" action="EditProfController.php"
+              onsubmit="return validateForm()" method="post">
 
 
             <?php
@@ -145,7 +146,7 @@ $contacts = $contactInfoController->getAllContacts();
     </div>
 </div>
 
-<?php include("Footer.php")?>
+<?php include("Footer.php") ?>
 
 <!--Applying an external javascript-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"/>
@@ -168,6 +169,94 @@ $contacts = $contactInfoController->getAllContacts();
         swal("Wrong Password format ", "Your Password Must Contain At Least 8 Characters! Contain At Least 1 Number, 1 Capital Letter,and 1 Lowercase Letter!", "error");
     else if (javaScriptVar === "7")
         swal("Wrong Address format ", "Please reenter your address", "error");
+
+    function validateForm() {
+        //First and Last names validation
+        let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
+        let passwordPattern1 = /[0-9]+/;
+        let passwordPattern2 = /[a-z]+/;
+        let passwordPattern3 = /[A-Z]+/;
+        let addressPattern = /^\d+ [a-zA-Z .,]+$/;
+        let mobilePattern = /^[0-9]{11}$/;
+        const firstNameElement = document.forms["EditProfileForm"]["FirstName"];
+        const lastNameElement = document.forms["EditProfileForm"]["LastName"];
+        const passwordElement = document.forms["EditProfileForm"]["Password"];
+        const newPasswordElement = document.forms["EditProfileForm"]["NewPassword"];
+        const newPasswordConfirmationElement = document.forms["EditProfileForm"]["ConfirmNewPassword"];
+        const mobileNumberElement = document.forms["EditProfileForm"]["MobileNumber"];
+        const addressElement = document.forms["EditProfileForm"]["Address"];
+        const emailElement = document.forms["EditProfileForm"]["Email"];
+        const confirmEmailElement = document.forms["EditProfileForm"]["EmailConfirmation"];
+
+        firstNameElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        lastNameElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        passwordElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        newPasswordElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        newPasswordConfirmationElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        addressElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        mobileNumberElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        confirmEmailElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+
+        if (!namePattern.test(firstNameElement.value.toString().trim())) {
+            firstNameElement.setCustomValidity("Enter a valid name");
+            return false;
+        } else if (!namePattern.test(lastNameElement.value.toString().trim())) {
+            lastNameElement.setCustomValidity("Enter a valid name");
+            return false;
+        } else if (confirmEmailElement.value.toString().trim() !== emailElement.value.toString().trim()) {
+            confirmEmailElement.setCustomValidity("Emails do not match");
+            return false;
+        } else if (!passwordPattern1.test(passwordElement.value.toString().trim())) {
+            passwordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (!passwordPattern2.test(passwordElement.value.toString().trim())) {
+            passwordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (!passwordPattern3.test(passwordElement.value.toString().trim())) {
+            passwordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (passwordElement.value.toString().trim().length < 8) {
+            passwordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (!passwordPattern1.test(newPasswordElement.value.toString().trim())) {
+            newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (!passwordPattern2.test(newPasswordElement.value.toString().trim())) {
+            newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (!passwordPattern3.test(newPasswordElement.value.toString().trim())) {
+            newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (newPasswordElement.value.toString().trim().length < 8) {
+            newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
+            return false;
+        } else if (newPasswordConfirmationElement.value.toString().trim() !== newPasswordElement.value.toString().trim()) {
+            newPasswordConfirmationElement.setCustomValidity("Passwords do not match");
+            return false;
+        } else if (!addressPattern.test(addressElement.value.toString().trim())) {
+            addressElement.setCustomValidity("Enter a valid address");
+            return false;
+        } else if (!mobilePattern.test(mobileNumberElement.value.toString().trim())) {
+            mobileNumberElement.setCustomValidity("Enter a valid mobile number");
+            return false;
+        }
+    }
 
 </script>
 </body>

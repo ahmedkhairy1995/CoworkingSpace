@@ -47,7 +47,8 @@ if (!isset($user))
 <div class="limiter">
     <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" method="post" action="EditCustomerController.php">
+            <form class="login100-form validate-form" method="post" action="EditCustomerController.php"
+                  name="EditCustForm" onsubmit="return validateForm()">
 					<span class="login100-form-title p-b-49">
 						Edit Customer
 					</span>
@@ -144,8 +145,46 @@ if (!isset($user))
         swal("Wrong Name format ", "Please reenter your name", "error");
     else if (javaScriptVar === "4")
         swal("Wrong Address format ", "Please reenter your address", "error");
-   else if (javaScriptVar === "5")
+    else if (javaScriptVar === "5")
         swal("Database error ", "Please try again", "error");
+
+    function validateForm() {
+        //First and Last names validation
+        let namePattern = /^[a-zA-Z][a-zA-Z ]*$/;
+        let addressPattern = /^\d+ [a-zA-Z .,]+$/;
+        let mobilePattern = /^[0-9]{11}$/;
+        const firstNameElement = document.forms["EditCustForm"]["firstName"];
+        const lastNameElement = document.forms["EditCustForm"]["lastName"];
+        const mobileNumberElement = document.forms["EditCustForm"]["mobileNumber"];
+        const addressElement = document.forms["EditCustForm"]["address"];
+
+        firstNameElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        lastNameElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        addressElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+        mobileNumberElement.oninput = function (e) {
+            e.target.setCustomValidity("");
+        };
+
+        if (!namePattern.test(firstNameElement.value.toString().trim())) {
+            firstNameElement.setCustomValidity("Enter a valid name");
+            return false;
+        } else if (!namePattern.test(lastNameElement.value.toString().trim())) {
+            lastNameElement.setCustomValidity("Enter a valid name");
+            return false;
+        } else if (!addressPattern.test(addressElement.value.toString().trim())) {
+            addressElement.setCustomValidity("Enter a valid address");
+            return false;
+        } else if (!mobilePattern.test(mobileNumberElement.value.toString().trim())) {
+            mobileNumberElement.setCustomValidity("Enter a valid mobile number");
+            return false;
+        }
+    }
 
 </script>
 

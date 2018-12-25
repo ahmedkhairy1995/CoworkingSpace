@@ -121,11 +121,12 @@ class ReservationTableController
             return true;
         return false;
     }
+
     public function getCount()
     {
         $query = "select count(*) as count FROM reservation";
         $result = $this->getDB()->performQuery($query);
-        if (isset($result)){
+        if (isset($result)) {
             $row = $this->db->fetchArray($result);
             return $row['count'];
         }
@@ -139,7 +140,7 @@ class ReservationTableController
         $hours = 0;
         if (isset($result) && isset(self::$controller)) {
             while ($row = $this->db->fetchArray($result)) {
-                if($row['endTime'] != $row['startTime'])
+                if ($row['endTime'] != $row['startTime'])
                     $hours += ($row['endTime'] - $row['startTime']);
             }
         }

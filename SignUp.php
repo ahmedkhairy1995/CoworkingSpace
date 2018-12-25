@@ -157,6 +157,8 @@ $contacts = $contactInfoController->getAllContacts();
             const passwordConfirmationElement = document.forms["SignUpForm"]["PasswordConfirmation"];
             const addressElement = document.forms["SignUpForm"]["Address"];
             const mobileNumberElement = document.forms["SignUpForm"]["MobileNumber"];
+            const emailElement = document.forms["SignUpForm"]["Email"];
+            const confirmEmailElement = document.forms["SignUpForm"]["EmailConfirmation"];
 
             firstNameElement.oninput = function (e) {
                 e.target.setCustomValidity("");
@@ -176,12 +178,18 @@ $contacts = $contactInfoController->getAllContacts();
             mobileNumberElement.oninput = function (e) {
                 e.target.setCustomValidity("");
             };
+            confirmEmailElement.oninput = function (e) {
+                e.target.setCustomValidity("");
+            };
 
             if (!namePattern.test(firstNameElement.value.toString().trim())) {
                 firstNameElement.setCustomValidity("Enter a valid name");
                 return false;
             } else if (!namePattern.test(lastNameElement.value.toString().trim())) {
                 lastNameElement.setCustomValidity("Enter a valid name");
+                return false;
+            } else if (confirmEmailElement.value.toString().trim() !== emailElement.value.toString().trim()) {
+                confirmEmailElement.setCustomValidity("Emails do not match");
                 return false;
             } else if (!passwordPattern1.test(passwordElement.value.toString().trim())) {
                 passwordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
