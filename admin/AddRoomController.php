@@ -18,8 +18,9 @@ $controller = RoomTableController::getRoomTableController();
 $capacity = isset($_POST["capacity"]) ? $_POST["capacity"] : "";
 $status = isset($_POST["status"]) ? $_POST["status"] : "";
 $result = $controller->insertRoom($capacity, $status);
-if (!is_numeric($Capacity) || !is_numeric($status)) {
-    redirect_to("AddRoom.php?flag=1&id=" . $ID);
+
+if (!is_numeric($Capacity)) {
+    redirect_to("AddRoom.php?flag=1");
 }
 if ($result)
     redirect_to("Rooms.php?flag=2");

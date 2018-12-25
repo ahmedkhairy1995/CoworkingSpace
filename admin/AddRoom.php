@@ -89,7 +89,7 @@ if (isset($_GET['flag']))
 <script>
     javaScriptVar = "<?php echo $flag; ?>";
     if (javaScriptVar === "1") {
-        swal("Sorry!", "The capacity or the room is not a number", "error");
+        swal("Sorry!", "The capacity is not a number", "error");
     }
     else if (javaScriptVar === "2") {
         swal("Database Error", "Please try again", "error");

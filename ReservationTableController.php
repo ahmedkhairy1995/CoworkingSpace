@@ -98,6 +98,7 @@ class ReservationTableController
     public function insertReservation($userID, $RoomNumber, $From, $To, $Projector, $Marker, $WhiteBoard, $AC, $Date, $Capacity)
     {
         $query = "INSERT INTO reservation (user_id,room_no,startTime,endTime,projector,markers,whiteBoard,AC,date,capacity) VALUES({$userID},{$RoomNumber},'{$From}','{$To}','{$Projector}','{$Marker}','{$WhiteBoard}','{$AC}','{$Date}',{$Capacity});";
+        echo $query;
         $result = $this->getDB()->performQuery($query);
         if (isset($result))
             return true;
