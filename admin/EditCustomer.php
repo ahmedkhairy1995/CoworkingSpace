@@ -77,7 +77,7 @@ if (!isset($user))
 
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Email</span>
-                    <input class="input100" type="text" name="email"
+                    <input class="input100" type="email" name="email"
                            value="<?php echo $user->getEmail() ?>">
                 </div>
                 <br/>
