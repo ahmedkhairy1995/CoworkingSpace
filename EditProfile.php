@@ -235,16 +235,16 @@ $contacts = $contactInfoController->getAllContacts();
         } else if (passwordElement.value.toString().trim().length < 8) {
             passwordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
             return false;
-        } else if (!passwordPattern1.test(newPasswordElement.value.toString().trim())) {
+        } else if (newPasswordElement.value.toString().trim() !== "" && !passwordPattern1.test(newPasswordElement.value.toString().trim())) {
             newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
             return false;
-        } else if (!passwordPattern2.test(newPasswordElement.value.toString().trim())) {
+        } else if (newPasswordElement.value.toString().trim() !== "" && !passwordPattern2.test(newPasswordElement.value.toString().trim())) {
             newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
             return false;
-        } else if (!passwordPattern3.test(newPasswordElement.value.toString().trim())) {
+        } else if (newPasswordElement.value.toString().trim() !== "" && !passwordPattern3.test(newPasswordElement.value.toString().trim())) {
             newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
             return false;
-        } else if (newPasswordElement.value.toString().trim().length < 8) {
+        } else if (newPasswordElement.value.toString().trim() !== "" && newPasswordElement.value.toString().trim().length < 8) {
             newPasswordElement.setCustomValidity("Password shall be alphanumeric with minimum length of 8 characters");
             return false;
         } else if (newPasswordConfirmationElement.value.toString().trim() !== newPasswordElement.value.toString().trim()) {

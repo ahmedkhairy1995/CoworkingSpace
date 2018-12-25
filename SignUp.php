@@ -34,7 +34,7 @@ $contacts = $contactInfoController->getAllContacts();
     <?php include("Header.php") ?>
 
     <div id="SignUpSpan">
-        <span>Create your Ebda3 Account</span>
+        <span>Create your Account</span>
     </div>
 
     <aside class="signUpAside">

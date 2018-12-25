@@ -55,7 +55,7 @@ include("Header.php")
 
 <aside>
     <div class="ourImageContainer">
-        <img src="" id="Pic" alt="Ebda3 Pictures" class="img img-responsive center-block" width="100%" height="100%">
+        <img src="" id="Pic" alt="Pictures" class="img img-responsive center-block" width="100%" height="100%">
     </div>
 </aside>
 
