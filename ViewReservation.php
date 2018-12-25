@@ -34,7 +34,7 @@ function redirect_to($newlocation)
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="description" content="Ebda3 Co-Working space.One of the leading coworking spaces in Egypt"/>
+    <link rel="icon" type="image/png" href="logo.jpg"/>
     <title>View Reservations</title>
     <script src="sweetalert/dist/sweetalert.min.js"></script>
     <!-- Minified CSS -->

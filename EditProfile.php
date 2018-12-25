@@ -20,8 +20,8 @@ $contacts = $contactInfoController->getAllContacts();
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="description" content="Edit your Ebdaa Account"/>
     <title>Edit your profile</title>
+    <link rel="icon" type="image/png" href="logo.jpg"/>
 
     <!--Applying an external stylesheet-->
     <script src="sweetalert/dist/sweetalert.min.js"></script>
