@@ -42,48 +42,7 @@ $contacts = $contactInfoController->getAllContacts();
 
 <div id="body">
 
-
-    <!--logo of the co-working space-->
-    <div id="LogoDiv">
-        <img id="Logo" src="logo.jpg" alt="Logo">
-    </div>
-
-    <!--Main Menu Navigation Tabs-->
-    <div id="MenuTab">
-        <nav id="MainMenuNavigation" class="nav nav-tabs-justified">
-            <div class="cl-effect-14">
-                <a href="Homepage.php" title="Homepage" role="button">Homepage</a>
-                <a href="Reservation.php" title="" role="button">Book A Room</a>
-                <a href="ViewReservation.php" title="" role="button">My Reservations</a>
-                <a href="AboutUs.php" title="" role="button">About Us</a>
-                <?php
-                if (!isset($_SESSION['views']))
-                {
-                    ?>
-                    <a href="LoginPage.php" title="" role="button">Login</a>
-                    <?php
-                }
-                else
-                {
-                ?>
-                <div class="dropdown">
-                    <a href="" class="btn" title="" role="button" data-toggle="dropdown" id="menu" aria-haspopup="true"
-                       aria-expanded="true">
-                        <?php echo $_SESSION['name'] ?>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="menu">
-                        <li><a href="EditProfile.php" title="">Edit Profile</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="LogOut.php" title="" id="logout">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-            <?php
-            }
-            ?>
-        </nav>
-    </div>
+<?php include('Header.php') ?>
 
     <div id="EditYourProfileSpan">
         <span>Edit your account</span>
