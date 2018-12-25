@@ -15,6 +15,7 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     redirect_to("Login.php");
 }
+$flag =  $_GET['flag'];
 
 ?>
 
@@ -82,6 +83,15 @@ if (!isset($_SESSION['admin'])) {
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    javaScriptVar = "<?php echo $flag; ?>";
 
+    if (javaScriptVar === "1") {
+        swal("Sorry!", "The capacity or the room is not a number", "error");
+    }
+    else if (javaScriptVar === "2") {
+        swal("Database Error", "Please try again", "error");
+    }
+</script>
 </body>
 </html>

@@ -9,6 +9,7 @@ function redirect_to($newlocation)
 <?php
 session_start();
 require_once('ReservationTableController.php');
+require_once('ValidationController.php');
 require_once('RoomTableController.php');
 require_once('UsersTableController.php');
 require_once('User.php');
@@ -17,6 +18,7 @@ require_once('User.php');
 $roomController = RoomTableController::getRoomTableController();
 $userController = UsersTableController::getUsersTableController();
 $reservationController = ReservationTableController::getReservationTableController();
+$validationController = ValidationController::getValidationController();
 
 if (isset($_SESSION['views'])) {
     if (isset($_POST["UpdateReservation"])) {
@@ -56,6 +58,9 @@ if (isset($_SESSION['views'])) {
             redirect_to("EditReservation.php?flag=5&id=" . $ID);
         } else if ($maxCapacity < $Capacity) {
             redirect_to("EditReservation.php?flag=6&id=" . $ID);
+        } else if (!is_numeric($Capacity) || !is_numeric($RoomNumber)) {
+            redirect_to("EditReservation.php?flag=7&id=" . $ID);
+
         } else {
             $result = $reservationController->updateReservation($ID, $userID, $RoomNumber, $From, $To, $Projector, $Marker, $WhiteBoard, $AC, $Date, $Capacity);
             if ($result)

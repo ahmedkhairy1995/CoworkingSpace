@@ -194,6 +194,16 @@ $contacts = $contactInfoController->getAllContacts();
         swal("Confirm Password", "Password doesn't match", "error");
     else if (javaScriptVar === "2")
         swal("Wrong Password", "Please enter your old password", "error");
+    else if (javaScriptVar === "3")
+        swal("Wrong Email format ", "Please reenter your email", "error");
+    else if (javaScriptVar === "4")
+        swal("Wrong Name format ", "Please reenter your name", "error");
+    else if (javaScriptVar === "5")
+        swal("Wrong Mobile format ", "Please reenter your mobile number", "error");
+    else if (javaScriptVar === "6")
+        swal("Wrong Password format ", "Your Password Must Contain At Least 8 Characters! Contain At Least 1 Number, 1 Capital Letter,and 1 Lowercase Letter!", "error");
+    else if (javaScriptVar === "7")
+        swal("Wrong Address format ", "Please reenter your address", "error");
 
 </script>
 </body>

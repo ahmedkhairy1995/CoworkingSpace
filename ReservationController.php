@@ -11,12 +11,15 @@ session_start();
 require_once('ReservationTableController.php');
 require_once('RoomTableController.php');
 require_once('UsersTableController.php');
+require_once('ValidationController.php');
 require_once('User.php');
 ?>
 <?php
 $roomController = RoomTableController::getRoomTableController();
 $userController = UsersTableController::getUsersTableController();
 $reservationController = ReservationTableController::getReservationTableController();
+$validationController = ValidationController::getValidationController();
+
 if (isset($_SESSION['views'])) {
     if (isset($_POST["checkAvailability"])) {
         $RoomNumber = isset($_POST["roomForm"]) ? $_POST["roomForm"] : "";
@@ -42,6 +45,18 @@ if (isset($_SESSION['views'])) {
 
         if ($blocked == 1)
             redirect_to("Reservation.php?flag=1");
+        else if( !is_numeric($Capacity) || !is_numeric($RoomNumber)){
+            $_SESSION['RoomNumber'] = $RoomNumber;
+            $_SESSION['Date'] = $Date;
+            $_SESSION['From'] = $From;
+            $_SESSION['To'] = $To;
+            $_SESSION['Projector'] = $Projector;
+            $_SESSION['Marker'] = $Marker;
+            $_SESSION['AC'] = $AC;
+            $_SESSION['WhiteBoard'] = $WhiteBoard;
+            $_SESSION['Capacity'] = $Capacity;
+            redirect_to("Reservation.php?flag=7");
+        }
         elseif ($Date < date("Y-m-d")) {
             $_SESSION['RoomNumber'] = $RoomNumber;
             $_SESSION['Date'] = $Date;

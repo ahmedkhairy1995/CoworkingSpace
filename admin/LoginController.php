@@ -12,6 +12,13 @@ $adminController = AdminTableController::getAdminTableController();
 
 $username = isset($_POST['username']) ? $_POST['username']: "" ;
 $password = isset($_POST['password']) ? $_POST['password']: "";
+if (!$validationController->validateName($username)) {
+    redirect_to("LoginPage.php?flag=3");
+
+} else if (!$validationController->validatePassword($password) ){
+    redirect_to("Login.php?flag=2");
+
+}
 
 $result = $adminController->authenticate($username,$password);
 

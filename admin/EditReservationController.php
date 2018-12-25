@@ -56,6 +56,9 @@ if (isset($_POST["UpdateReservation"])) {
         redirect_to("EditReservation.php?flag=5&id=" . $ID);
     } else if ($maxCapacity < $Capacity) {
         redirect_to("EditReservation.php?flag=6&id=" . $ID);
+    } else if (!is_numeric($Capacity) || !is_numeric($RoomNumber)) {
+        redirect_to("EditReservation.php?flag=7&id=" . $ID);
+
     } else {
         $result = $reservationController->updateReservation($ID, $UserId, $RoomNumber, $From, $To, $Projector, $Marker, $WhiteBoard, $AC, $Date, $Capacity);
         if ($result)

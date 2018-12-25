@@ -185,6 +185,17 @@ $contacts = $contactInfoController->getAllContacts();
     else if (javaScriptVar === "5") {
         swal("Error", "<?php echo $_SESSION['DB-Error']?>", "error");
     }
+    else if (javaScriptVar === "8")
+        swal("Wrong Email format ", "Please reenter your email", "error");
+    else if (javaScriptVar === "9")
+        swal("Wrong Mobile format ", "Please reenter your mobile number", "error");
+    else if (javaScriptVar === "10")
+        swal("Wrong Name format ", "Please reenter your name", "error");
+    else if (javaScriptVar === "6")
+        swal("Wrong Password format ", "Your Password Must Contain At Least 8 Characters! Contain At Least 1 Number, 1 Capital Letter,and 1 Lowercase Letter!", "error");
+    else if (javaScriptVar === "7")
+        swal("Wrong Address format ", "Please reenter your address", "error");
+
 </script>
 </body>
 </html>

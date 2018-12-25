@@ -18,6 +18,7 @@ if (!isset($_SESSION['admin'])) {
 require_once('../ContactInfoTableController.php');
 $contactController = ContactInfoTableController::getContactInfoTableController();
 $contactId = $_GET['id'];
+$flag =  $_GET['flag'];
 $contact = $contactController->getContactById($contactId);
 if (!isset($contact))
     redirect_to("Overview.php?flag=0");
@@ -36,6 +37,8 @@ if (!isset($contact))
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/blocks.css">
     <link rel="stylesheet" href="css/header-user-dropdown.css">
+    <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
+
 </head>
 <body>
 <?php include("header-user-dropdown.php") ?>
@@ -80,6 +83,15 @@ if (!isset($contact))
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    javaScriptVar = "<?php echo $flag; ?>";
+    if (javaScriptVar === "1") {
+        swal("Wrong Mobile Format", "Please reenter the number ", "error");
+    }
+    else if (javaScriptVar === "2") {
+        swal("Database Error", "Please try again", "error");
+    }
 
+</script>
 </body>
 </html>

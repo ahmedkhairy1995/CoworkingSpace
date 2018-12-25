@@ -20,6 +20,7 @@ require_once('../RoomTableController.php');
 $reservationController = ReservationTableController::getReservationTableController();
 $roomsController = RoomTableController::getRoomTableController();
 $reservationId = $_GET['id'];
+$flag =  $_GET['flag'];
 $reservation = $reservationController->getReservationById($reservationId);
 if (!isset($reservation))
     redirect_to("Overview.php?flag=0");
@@ -32,6 +33,7 @@ if (!isset($reservation))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+    <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -140,6 +142,27 @@ if (!isset($reservation))
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    javaScriptVar = "<?php echo $flag; ?>";
 
+    if (javaScriptVar === "2") {
+        swal("Invalid Date", "Please enter valid date ", "error");
+    }
+    else if (javaScriptVar === "3") {
+        swal("Invalid Time", "Please enter valid time", "error");
+    }
+    else if (javaScriptVar === "4") {
+        swal("Sorry!", "The room is reserved and the capacity is less than what you need  ", "error");
+    }
+    else if (javaScriptVar === "5") {
+        swal("Sorry!", "The room is reserved ", "error");
+    }
+    else if (javaScriptVar === "6") {
+        swal("Sorry!", "The capacity is less than what you need.", "error");
+    }
+    else if (javaScriptVar === "7") {
+        swal("Sorry!", "The capacity or the room is not a number", "error");
+    }
+</script>
 </body>
 </html>

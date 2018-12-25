@@ -245,6 +245,9 @@ The form-handler is typically a server page with a script for processing input d
     else if (javaScriptVar === "6") {
         swal("Sorry!", "The capacity is less than what you need.", "error");
     }
+    else if (javaScriptVar === "7") {
+        swal("Sorry!", "The capacity or the room is not a number", "error");
+    }
 
 </script>
 </body>

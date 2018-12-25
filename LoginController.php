@@ -11,12 +11,23 @@ function redirect_to($newlocation)
 <?php
 require_once('ReservationTableController.php');
 require_once('RoomTableController.php');
+require_once('ValidationController.php');
 require_once('UsersTableController.php');
 require_once('User.php');
 $userController = UsersTableController::getUsersTableController();
+$validationController = ValidationController::getValidationController();
 
 $Email = isset($_POST["Email"]) ? $_POST["Email"] : "";
 $Password = isset($_POST["Password"]) ? $_POST["Password"] : "";
+if (!$validationController->validateEmail($Email) || !$validationController->validateEmail($EmailConfirmation)) {
+    redirect_to("LoginPage.php?flag=1");
+
+}
+else if (!$validationController->validatePassword($Password) ){
+    redirect_to("LoginPage.php?flag=2");
+
+}
+
 $Password = md5($Password);
 $user = $userController->getUserByEmail($Email);
 

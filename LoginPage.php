@@ -158,6 +158,10 @@ $contacts = $contactInfoController->getAllContacts();
     }
     else if (javaScriptVar === "41") {
         swal("Invalid Email", "Please enter valid email", "error");
+    } else if (javaScriptVar === "1") {
+        swal("Wrong Email format ", "Please reenter your email", "error");
+    } else if (javaScriptVar === "2") {
+        swal("Wrong Password format ", "Your Password Must Contain At Least 8 Characters! Contain At Least 1 Number, 1 Capital Letter,and 1 Lowercase Letter!", "error");
     }
 </script>
 </body>

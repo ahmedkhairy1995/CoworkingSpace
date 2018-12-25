@@ -18,6 +18,7 @@ if (!isset($_SESSION['admin'])) {
 require_once('../UsersTableController.php');
 $userController = UsersTableController::getUsersTableController();
 $userId = $_GET['id'];
+$flag =  $_GET['flag'];
 $user = $userController->getUserByID($userId);
 if (!isset($user))
     redirect_to("Overview.php?flag=0");
@@ -30,7 +31,7 @@ if (!isset($user))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
-
+    <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -94,16 +95,16 @@ if (!isset($user))
                 <div class="wrap-input100 validate-input m-b-23">
                     <span class="label-input100">Blocked</span>
                     <select name="blocked">
-                    <option value="<?php echo 1 ?>"<?php if ($user->getBlocked() == 1) {
-                        echo "selected";
-                    } ?>>
-                        <?php echo "Yes"; ?>
-                    </option>
-                    <option value="<?php echo 0 ?>"<?php if ($user->getBlocked() == 0) {
-                        echo "selected";
-                    } ?>>
-                        <?php echo "No"; ?>
-                    </option>
+                        <option value="<?php echo 1 ?>"<?php if ($user->getBlocked() == 1) {
+                            echo "selected";
+                        } ?>>
+                            <?php echo "Yes"; ?>
+                        </option>
+                        <option value="<?php echo 0 ?>"<?php if ($user->getBlocked() == 0) {
+                            echo "selected";
+                        } ?>>
+                            <?php echo "No"; ?>
+                        </option>
                     </select>
 
                 </div>
@@ -115,7 +116,8 @@ if (!isset($user))
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
-                         <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow" value="EDIT" style="width: 100%;text-align: center;">
+                        <input type="submit" name="submit" class="btn btn-market btn-large btn--with-shadow"
+                               value="EDIT" style="width: 100%;text-align: center;">
                     </div>
                 </div>
 
@@ -127,6 +129,22 @@ if (!isset($user))
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
+<script>
+
+    javaScriptVar = "<?php echo $flag; ?>";
+    if (javaScriptVar === "3")
+        swal("Wrong Email format ", "Please reenter your email", "error");
+    else if (javaScriptVar === "1")
+        swal("Wrong Mobile format ", "Please reenter your mobile number", "error");
+    else if (javaScriptVar === "2")
+        swal("Wrong Name format ", "Please reenter your name", "error");
+    else if (javaScriptVar === "4")
+        swal("Wrong Address format ", "Please reenter your address", "error");
+   else if (javaScriptVar === "5")
+        swal("Database error ", "Please try again", "error");
+
+</script>
 
 </body>
 </html>

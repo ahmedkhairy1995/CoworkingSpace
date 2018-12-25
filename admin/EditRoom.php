@@ -17,6 +17,7 @@ if (!isset($_SESSION['admin'])) {
 }
 require_once('../RoomTableController.php');
 $roomsController = RoomTableController::getRoomTableController();
+$flag =  $_GET['flag'];
 $roomId = $_GET['id'];
 $room = $roomsController->getRoomByID($roomId);
 if (!isset($room))
@@ -30,7 +31,7 @@ if (!isset($room))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
-
+    <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -97,6 +98,15 @@ if (!isset($room))
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    javaScriptVar = "<?php echo $flag; ?>";
 
+    if (javaScriptVar === "1") {
+        swal("Sorry!", "The capacity or the room is not a number", "error");
+    }
+    else if (javaScriptVar === "2") {
+        swal("Database Error", "Please try again", "error");
+    }
+</script>
 </body>
 </html>
