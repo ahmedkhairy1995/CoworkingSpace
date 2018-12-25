@@ -17,37 +17,38 @@ class ValidationController
         return self::$controller;
     }
 
-    public function validateEmail($email){
+    public function validateEmail($email)
+    {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
 
     }
 
-    public function validatePassword($password){
+    public function validatePassword($password)
+    {
         if (strlen($password) <= '8') {
-           return false;
-        }
-        elseif(!preg_match("#[0-9]+#",$password)) {
             return false;
-        }
-        elseif(!preg_match("#[A-Z]+#",$password)) {
+        } elseif (!preg_match("#[0-9]+#", $password)) {
             return false;
-        }
-        elseif(!preg_match("#[a-z]+#",$password)) {
+        } elseif (!preg_match("#[A-Z]+#", $password)) {
             return false;
-        } else {
-          return true;
-        }
+        } elseif (!preg_match("#[a-z]+#", $password)) {
+            return false;
+        } else
+            return true;
     }
 
-    public function validateName($name){
-        return preg_match("/^[a-zA-Z ]*$/",$name);
+    public function validateName($name)
+    {
+        return preg_match("/^[a-zA-Z][a-zA-Z ]*$/", $name);
     }
+
     public function validateMobile($mobile)
     {
-        return preg_match('/^[0-9]{11}+$/', $mobile);
+        return preg_match('/^[0-9]{11}$/', $mobile);
     }
+
     public function validateAddress($address)
     {
-        return preg_match('/^\\d+ [a-zA-Z ]+, [a-zA-Z ]+$/', $address);
+        return preg_match('/^\d+ [a-zA-Z .,]+$/', $address);
     }
 }
