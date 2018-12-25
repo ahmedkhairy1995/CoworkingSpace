@@ -73,7 +73,7 @@ $contacts = $contactInfoController->getAllContacts();
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="menu">
-                        <li><a href="EditProfile.html" title="">Edit Profile</a></li>
+                        <li><a href="EditProfile.php" title="">Edit Profile</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="LogOut.php" title="" id="logout">Logout</a></li>
                     </ul>
@@ -86,7 +86,7 @@ $contacts = $contactInfoController->getAllContacts();
     </div>
 
     <div id="EditYourProfileSpan">
-        <span>Edit your Ebdaa account</span>
+        <span>Edit your account</span>
     </div>
 
     <div id="EditProfileForm">
@@ -177,8 +177,8 @@ $contacts = $contactInfoController->getAllContacts();
     let passwordPattern3 = /[A-Z]+/;
     let addressPattern = /^\d+ [a-zA-Z .,]+$/;
     let mobilePattern = /^[0-9]{11}$/;
-    const firstNameElement = document.forms["EditProfileForm"]["FirstName"];
-    const lastNameElement = document.forms["EditProfileForm"]["LastName"];
+    const firstNameElement = document.forms["EditProfileForm"]["firstName"];
+    const lastNameElement = document.forms["EditProfileForm"]["lastName"];
     const passwordElement = document.forms["EditProfileForm"]["Password"];
     const newPasswordElement = document.forms["EditProfileForm"]["NewPassword"];
     const newPasswordConfirmationElement = document.forms["EditProfileForm"]["ConfirmNewPassword"];
