@@ -140,7 +140,7 @@ class ReservationTableController
         if (isset($result) && isset(self::$controller)) {
             while ($row = $this->db->fetchArray($result)) {
                 if($row['endTime'] != $row['startTime'])
-                    $hours += $row['endTime'] - $row['startTime'];
+                    $hours += ($row['endTime'] - $row['startTime']);
             }
         }
         return $hours * 5;
