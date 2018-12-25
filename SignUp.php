@@ -1,5 +1,6 @@
 <?php
 session_start();
+$flag = -1;
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 
@@ -45,8 +46,8 @@ $contacts = $contactInfoController->getAllContacts();
         <!--The action attribute defines the action to be performed when the form is submitted.
         Normally, the form data is sent to a web page on the server when the user clicks on the submit button.
         In the example above, the form data is sent to a page on the server called "/action_page.php". This page contains a server-side script that handles the form data-->
-        <!--    action="SignupController.php"-->
-        <form id="_SignUpForm" name="SignUpForm" onsubmit="return validateForm()"
+
+        <form id="_SignUpForm" name="SignUpForm" action="SignupController.php" onsubmit="return validateForm()"
               method="post">
 
             <p><strong>Name</strong></p>
@@ -119,8 +120,7 @@ $contacts = $contactInfoController->getAllContacts();
     <script src="js/SignUpScript.js"></script>
 
     <script>
-
-        javaScriptVar = "<?php if (isset($flag)) echo $flag; ?>";
+        javaScriptVar = "<?php echo $flag; ?>";
         if (javaScriptVar === "1") {
             swal("Error", "This is a wrong ID!", "error");
         } else if (javaScriptVar === "2") {

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$flag = -1;
 if (isset($_GET['flag']))
     $flag = $_GET['flag'];
 ?>
@@ -49,7 +50,7 @@ $contacts = $contactInfoController->getAllContacts();
 </head>
 
 <body>
-    <?php include("Header.php")?>
+<?php include("Header.php") ?>
 <div id="BookARoomSpan">
     <span>Book a room</span>
 </div>
@@ -76,7 +77,7 @@ $contacts = $contactInfoController->getAllContacts();
         </select><br><br>
 
         <p><strong>Date</strong><i style="color:dimgrey;">&nbsp &nbsp (yyyy-mm-dd)</i></p>
-        <input id="DatePicker" type="date" name="reservationDay"
+        <input id="DatePicker" type="date" name="reservationDay" max='2019-12-01'
                value="<?php if (isset($_SESSION['Date'])) echo $_SESSION['Date']; ?>"><br><br>
 
         <p><strong>Capacity</strong></p>
@@ -117,30 +118,38 @@ The form-handler is typically a server page with a script for processing input d
     </form>
 </div>
 
-<?php include("Footer.php")?>
+<?php include("Footer.php") ?>
 <!--Applying an external javascript-->
 <script>
-    javaScriptVar = "<?php echo $flag; ?>";
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("reservationDay").setAttribute("min", today);
+
+    javaScriptVar = "<?php if (isset($flag)) echo $flag; ?>";
 
     if (javaScriptVar === "1") {
         swal("Blocked User", "Please contact the admin ", "error");
-    }
-    else if (javaScriptVar === "2") {
+    } else if (javaScriptVar === "2") {
         swal("Invalid Date", "Please enter valid date ", "error");
-    }
-    else if (javaScriptVar === "3") {
+    } else if (javaScriptVar === "3") {
         swal("Invalid Time", "Please enter valid time", "error");
-    }
-    else if (javaScriptVar === "4") {
+    } else if (javaScriptVar === "4") {
         swal("Sorry!", "The room is reserved and the capacity is less than what you need  ", "error");
-    }
-    else if (javaScriptVar === "5") {
+    } else if (javaScriptVar === "5") {
         swal("Sorry!", "The room is reserved ", "error");
-    }
-    else if (javaScriptVar === "6") {
+    } else if (javaScriptVar === "6") {
         swal("Sorry!", "The capacity is less than what you need.", "error");
-    }
-    else if (javaScriptVar === "7") {
+    } else if (javaScriptVar === "7") {
         swal("Sorry!", "The capacity or the room is not a number", "error");
     }
 </script>
